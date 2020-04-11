@@ -1,0 +1,13 @@
+.spinner {
+    animation: rotate 1.5s linear infinite;
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+    background-size: 80px;
+    background-image: url('./../../../../assets/img/infinite-spinner.svg');
+  }
+    @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }

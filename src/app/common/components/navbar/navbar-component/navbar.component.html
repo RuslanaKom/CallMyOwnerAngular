@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light" xmlns="http://www.w3.org/1999/html">
+  <span class="d-none d-sm-block navbar-brand">Lost Stuff</span>
+  <span class="d-block d-sm-none navbar-brand" style="padding-left:0;">Lost Stuff</span>
+  <div class="d-none d-sm-block collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-text to-right" *ngIf="languages.length > 1">
+      <div class="d-inline-block" *ngFor="let language of languages; last as isLast">
+        <a class="button-transparent mx-2 px-0"
+                [ngClass]="{'current-language': this.currentLanguage === language}"
+                [href]="getLanguageHref(language)">
+          {{ language.toUpperCase() }}
+        </a>
+        <span *ngIf="!isLast">|</span>
+      </div>
+    </div>
+
+    <span class="navbar-text" *ngIf="showUser">
+    <span class="ml-5">
+        <svg-icon src="assets/img/user.svg" [svgStyle]="{'width.rem':'1.5rem','fill':'#ffffff'}"
+                  [applyCss]="false"></svg-icon>
+        <span class="ml-1">{{loggedUserName}}</span>
+      </span>
+      </span>
+    <form class="form-inline my-2 my-lg-0" *ngIf="showUser">
+      <button type="button" class="btn btn-link my-2 my-sm-0 ml-5 no-margin no-padding" aria-label="Close">
+        <span aria-hidden="true" (click)="confirmLogout()" class="close-button">Logout</span>
+      </button>
+    </form>
+  </div>
+
+  <form class="form-inline my-2 my-lg-0" *ngIf="!showUser">
+    <button type="button" class="btn btn-link my-2 my-sm-0 ml-5 no-margin no-padding" aria-label="Close">
+      <span aria-hidden="true" (click)="login()" class="close-button">Login</span>
+    </button>
+  </form>
+
+  <div class="d-block d-sm-none form-inline my-2 my-lg-0 no-margin" *ngIf="showUser">
+    <img [src]="'assets/img/user-fold.png'" alt="User info popup button"/>
+    <button type="button" class="btn btn-link my-2 my-sm-0 ml-3 no-margin no-padding" aria-label="Close">
+      <span aria-hidden="true" (click)="confirmLogout()" class="close-button-mobile">&times;</span>
+    </button>
+  </div>
+</nav>

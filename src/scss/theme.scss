@@ -1,0 +1,166 @@
+// Add commercial fonts
+@font-face {
+  font-family: PFBeauSansPro-Light;
+  src: url('/assets/fonts/PFBeauSansPro-Light.otf');
+}
+
+@font-face {
+  font-family: PFBeauSansPro-Reg;
+  src: url('/assets/fonts/PFBeauSansPro-Reg.otf');
+}
+
+@font-face {
+  font-family: PFBeauSansPro-SeBold;
+  src: url('/assets/fonts/PFBeauSansPro-SeBold.otf');
+}
+
+@font-face {
+  font-family: PFBeauSansPro-Thin;
+  src: url('/assets/fonts/PFBeauSansPro-Thin.otf');
+}
+
+@font-face {
+  font-family: PFBeauSansPro-XThin;
+  src: url('/assets/fonts/PFBeauSansPro-XThin.otf');
+}
+
+
+// Main colors
+$theme-colors: (
+  light: #00639f,
+  primary: #277ac9
+) !default;
+
+$body-color: #000000 !default;
+
+$light-blue: #017BD0 !default;
+
+// nav bar
+$navbar-light-color: rgba(#fff, 1) !default;
+$navbar-light-active-color: rgba(#fff, 1) !default;
+
+// Modal header
+$modal-header-border-width: 0 !default;
+$modal-inner-padding: 0.5rem !default;
+$modal-footer-border-width: 0 !default;
+
+// Shadows
+$enable-shadows: true !default;
+
+// input box
+$input-font-family: PFBeauSansPro-Thin !default;
+$input-font-size: 1.5rem !default;
+$input-border-radius: 0.3125rem !default;
+$input-border-color: #b5b5b5 !default;
+
+// Button
+$btn-border-radius: 2rem !default;
+$btn-font-size: 1.2rem !default;
+$btn-font-family: "Open Sans", sans-serif !default;
+$btn-border-radius: 1.5625rem !default;
+$btn-border-width: 0.15rem !default;
+$btn-box-shadow: 0 6rem 1.3rem 0 rgba(39, 122, 201, 0.28) !default;
+
+//custom-control style
+$custom-control-indicator-size: 1.875rem;
+$custom-radio-indicator-icon-checked: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -3 6 6'%3e%3ccircle r='3' fill='%23277ac9'/%3e%3c/svg%3e");
+$custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='2 0 4 7'%3e%3cpath fill='%23277ac9' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+//disabled bg
+$custom-control-indicator-checked-disabled-bg: #e9ecef;
+//checked backgroundcolor and border
+$custom-control-indicator-checked-bg: #ffffff;
+$custom-control-indicator-checked-border-color: #d3d3d3;
+//default color and border size
+$custom-control-indicator-border-color: #d3d3d3;
+$custom-control-indicator-border-width: 0.0625rem;
+
+// Body
+html, body {
+  height: 100%;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.max-width {
+  width: 100% !important;
+}
+
+// Bootstrap and its default variables
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: $navbar-brand-padding-y;
+  padding-bottom: 0.1rem;
+  padding-left: 2.5rem;
+  margin-right: $navbar-padding-x;
+  @include font-size($navbar-brand-font-size);
+  line-height: inherit;
+  white-space: nowrap;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+.navbar-text {
+  display: inline-block;
+  padding-top: $nav-link-padding-y;
+  padding-bottom: 0;
+}
+
+.header {
+  margin-top: 3.3625rem;
+  color: #222222;
+  font-size: 3.25rem;
+  line-height: 3.25rem;
+  margin-bottom: 0.9375rem;
+  font-family: PFBeauSansPro-Thin, sans-serif;
+}
+
+
+/**
+  checkbox and radio size
+*/
+.custom-control-label::before,
+.custom-control-label::after {
+  top: .25rem;
+}
+
+.vf-btn-disabled:hover, .vf-btn-disabled {
+  background-color: #797979 !important;
+  opacity: 1 !important;
+  color: #cccccc;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.cancel-confirm-modal .modal-dialog{
+  max-width: 28.45625rem !important;
+  padding-top: 6rem;
+}
+
+.highlight {
+  border: 0.15rem red solid;
+}
+
+.custom-control-input-invalid {
+  position: absolute;
+  z-index: -1; // Put the input behind the label so it doesn't overlay text
+  opacity: 0;
+
+  &:not(:checked) ~ .custom-control-label::before {
+    border: 0.15rem red solid;
+  }
+}
+
+.bg-light-blue {
+  background-color: $light-blue;
+}

@@ -1,0 +1,35 @@
+.to-right {
+  margin-right: 2%;
+  margin-left: auto;
+}
+
+.button-transparent {
+  background-color: transparent;
+  color: white;
+  border-style: hidden;
+  outline: transparent;
+}
+
+.current-language {
+  color: white;
+  text-decoration: underline;
+  opacity: 0.6
+}
+
+.close-button {
+  color: white;
+  padding: 0;
+  display: inline-block;
+  font-size: xx-large;
+  line-height: 34px;
+  height: 35px;
+}
+
+close-button-mobile {
+  color: white;
+  padding: 0;
+  display: inline-block;
+  font-size: xx-large;
+  line-height: 24px;
+  height: 25px;
+}
