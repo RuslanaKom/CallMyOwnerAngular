@@ -4,6 +4,7 @@ import {UserService} from '../../services/user.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 import {Router} from '@angular/router';
+import {UserLoginDto} from '../../models/generated';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,10 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent {
   baseHref: string;
-
-  username: string;
-  password: string;
+  userLoginDto: UserLoginDto = {
+    username : null,
+    password : null,
+  };
   submitted: boolean;
 
   constructor(location: PlatformLocation,
@@ -27,9 +29,11 @@ export class LoginComponent {
   login() {
     this.submitted = true;
     this.userService.clearAuthCookie();
-    this.userService.login(this.username, this.password).subscribe(
-      () => {
-        this.router.navigate(['/']);
+    this.userService.login(this.userLoginDto).subscribe(
+      (response) => {
+        console.log(response);
+        this.userService.setToken(response);
+        this.router.navigate(['home']);
       },
       error => {
         console.error('Error occurred when login', error);

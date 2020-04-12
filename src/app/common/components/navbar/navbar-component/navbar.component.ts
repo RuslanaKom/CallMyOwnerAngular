@@ -4,6 +4,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalPopupComponent} from '../../../../modal-popup/modal-popup.component';
 import {Router} from '@angular/router';
 import {PlatformLocation} from '@angular/common';
+import {User} from '../../../../models/generated';
 
 @Component({
   selector: 'app-navbar',
@@ -13,13 +14,11 @@ import {PlatformLocation} from '@angular/common';
 export class NavbarComponent implements OnInit {
 
   @Input()
-  showUser: boolean;
-  @Input()
-  logoutDirectly = false;
+  logoutDirectly = true;
 
-  loggedUserName: string;
+  user: User;
   currentLanguage: string;
-  languages: ['en', 'lt'];
+  languages = ['en', 'lt'];
 
   constructor(private location: PlatformLocation,
               private userService: UserService,
@@ -28,19 +27,21 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loggedUserName = this.userService.getLoginName();
+    this.user = this.userService.getUser();
+    console.log('init navbar');
+    console.log('user in navabr' + this.user);
   }
 
   confirmLogout() {
     if (this.logoutDirectly) {
       this.userService.clearAuthCookie();
-      this.userService.goToLoginPage();
+      location.reload();
       return;
     }
 
     const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
     modalRef.componentInstance.title = 'Log out';
-    modalRef.componentInstance.content = 'Log out user' + this.loggedUserName;
+    modalRef.componentInstance.content = 'Log out user' + this.user;
     modalRef.componentInstance.buttons = [
       // tslint:disable-next-line:max-line-length
       {label: 'YES', reason: 'CONFIRMED', active: false, width: 10, marginLeft: 0},
@@ -62,7 +63,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogout() {
-    console.log('Logging out with: ', this.loggedUserName);
+    console.log('Logging out with: ', this.user);
     this.userService.logout();
   }
 

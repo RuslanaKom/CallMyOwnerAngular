@@ -1,0 +1,16 @@
+<div fxLayout="column" fxFlexFill>
+  <app-navbar fxFlex [logoutDirectly]="true"></app-navbar>
+  <div fxFlex>
+    <div fxFlexFill fxLayout="row">
+      <main class="container main" fxFlex fxFlexFill>
+        <div class="row">
+        </div>
+        <app-stuff-line></app-stuff-line>
+        <div *ngFor="let stuffUnit of stuffList">
+          <app-stuff-line [stuffUnit]="stuffUnit"></app-stuff-line>
+        </div>
+        <app-spinner *ngIf="!stuffList"></app-spinner>
+      </main>
+    </div>
+  </div>
+</div>

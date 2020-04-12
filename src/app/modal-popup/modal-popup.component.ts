@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Input} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+
 
 
 /* Usage example:

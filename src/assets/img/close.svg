@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="5.8460002mm"
+   height="5.8460002mm"
+   viewBox="0 0 5.8460002 5.8460002"
+   version="1.1"
+   id="svg4025"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="close.svg">
+  <defs
+     id="defs4019" />
+  <sodipodi:namedview
+     id="base"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="-101.42857"
+     inkscape:cy="560"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="1042"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4022">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-291.154)">
+    <g
+       id="Group_347"
+       data-name="Group 347"
+       transform="matrix(0.26458333,0,0,0.26458333,-226.67393,177.52155)">
+      <rect
+         y="0"
+         x="0"
+         id="Rectangle_391-2"
+         width="3"
+         height="30"
+         data-name="Rectangle 391"
+         rx="1.5"
+         transform="rotate(45,-79.02,1273.44)" />
+      <rect
+         y="0"
+         x="0"
+         id="Rectangle_392-2"
+         width="3"
+         height="30"
+         data-name="Rectangle 392"
+         rx="1.5"
+         transform="rotate(-45,948.288,-817.916)" />
+    </g>
+  </g>
+</svg>

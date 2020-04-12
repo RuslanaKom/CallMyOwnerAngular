@@ -13,27 +13,27 @@
       </div>
     </div>
 
-    <span class="navbar-text" *ngIf="showUser">
+    <span class="navbar-text" >
     <span class="ml-5">
         <svg-icon src="assets/img/user.svg" [svgStyle]="{'width.rem':'1.5rem','fill':'#ffffff'}"
                   [applyCss]="false"></svg-icon>
-        <span class="ml-1">{{loggedUserName}}</span>
+        <span class="ml-1">{{user}}</span>
       </span>
       </span>
-    <form class="form-inline my-2 my-lg-0" *ngIf="showUser">
+    <form class="form-inline my-2 my-lg-0" *ngIf="user">
       <button type="button" class="btn btn-link my-2 my-sm-0 ml-5 no-margin no-padding" aria-label="Close">
         <span aria-hidden="true" (click)="confirmLogout()" class="close-button">Logout</span>
       </button>
     </form>
   </div>
 
-  <form class="form-inline my-2 my-lg-0" *ngIf="!showUser">
+  <form class="form-inline my-2 my-lg-0" *ngIf="!user">
     <button type="button" class="btn btn-link my-2 my-sm-0 ml-5 no-margin no-padding" aria-label="Close">
       <span aria-hidden="true" (click)="login()" class="close-button">Login</span>
     </button>
   </form>
 
-  <div class="d-block d-sm-none form-inline my-2 my-lg-0 no-margin" *ngIf="showUser">
+  <div class="d-block d-sm-none form-inline my-2 my-lg-0 no-margin" *ngIf="user">
     <img [src]="'assets/img/user-fold.png'" alt="User info popup button"/>
     <button type="button" class="btn btn-link my-2 my-sm-0 ml-3 no-margin no-padding" aria-label="Close">
       <span aria-hidden="true" (click)="confirmLogout()" class="close-button-mobile">&times;</span>

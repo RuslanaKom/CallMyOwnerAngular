@@ -1,0 +1,29 @@
+<div fxLayout="column" fxFlexFill xmlns="http://www.w3.org/1999/html">
+  <div fxFlex>
+    <div fxFlexFill fxLayout="row">
+      <main class="container main" fxFlex fxFlexFill>
+        <div class="row">
+
+          <div class="row-style with-border" *ngIf="!stuffUnit">
+            <div class="col-lg-1 name-header bold" i18n="@@stuff">Stuff</div>
+            <div class="col-lg-2 offset-1 name-header bold" i18n="@@message">Message</div>
+            <div class="col-lg-1 offset-2 name-header bold" i18n="@@email">Contact email</div>
+            <div class="col-lg-1 offset-3 name-header bold" i18n="@@generate-qr">Generate QR</div>
+          </div>
+
+          <div class="row-style with-border" *ngIf="stuffUnit">
+            <div class="col-lg-1 name-header">{{stuffUnit.stuffName}}</div>
+            <div class="col-lg-2 offset-1 sub-header">{{stuffUnit.defaultMessage}}</div>
+            <div class="col-lg-1 offset-2 sub-header">{{stuffUnit.contactEmail}}</div>
+            <div class="col-lg-1 offset-3">
+              <button (click)="generateQr(stuffUnit.id)">
+                <svg-icon src="assets/img/qr.svg" [svgStyle]="{'width.rem':'2rem','fill':'blue'}"
+                          [applyCss]="false"></svg-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
 import * as jwt_decode from 'jwt-decode';
-import {User} from '../models/generated';
+import {AccessToken, User, UserAccountDto, UserLoginDto} from '../models/generated';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -16,13 +16,23 @@ export class UserService {
   constructor(private httpClient: HttpClient,
               private router: Router,
               private cookieService: CookieService) {
-    this.HOST = environment.HOST;
+    this.HOST = environment.HOST + '/user';
   }
 
-  login(username: string, password: string): Observable<void> {
-    // return this.httpClient.get<void>(`${this.HOST}/tmbp/auth/${personalNumber}`);
-    // todo implement login
-    return null;
+  login(userLoginDto: UserLoginDto) {
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache'
+    });
+    const options = {
+      headers: httpHeaders,
+    };
+    console.log(options);
+    return this.httpClient.post<HttpResponse<any>>(`${this.HOST}/signin`, userLoginDto, options);
+  }
+
+  setToken(response: HttpResponse<any>) {
+    sessionStorage.setItem('access_token', JSON.stringify(response));
   }
 
   logout(): void {
@@ -30,11 +40,12 @@ export class UserService {
   }
 
   clearAuthCookie(): void {
+    sessionStorage.clear();
     this.cookieService.deleteAll('/');
   }
 
   getAuthorizationToken(): string {
-    const accessToken = this.cookieService.get('access_token');
+    const accessToken = sessionStorage.getItem('access_token');
     if (accessToken) {
       return accessToken;
     }
@@ -43,14 +54,16 @@ export class UserService {
   }
 
   getUser(): User | undefined {
-    const accessToken = this.getAuthorizationToken();
-    if (accessToken) {
-      const decoded = jwt_decode(accessToken);
-      // @ts-ignore
-      return decoded.user;
+    if (this.getAuthorizationToken()) {
+      const accessToken: AccessToken = JSON.parse(this.getAuthorizationToken());
+      if (accessToken) {
+        const decoded = jwt_decode(accessToken.accessToken);
+        console.log(decoded);
+        // @ts-ignore
+        return decoded.sub;
+      }
     }
   }
-
   getLoginName(): string | undefined {
     const user = this.getUser();
     if (user) {
@@ -59,12 +72,10 @@ export class UserService {
   }
 
   goToLoginPage(): Promise<boolean> {
-    return this.router.navigate(['/signin']);
+    return this.router.navigate(['/login']);
   }
 
-  registerUser(username: string, password: string, email: string) : Observable<void> {
-    // return this.httpClient.get<void>(`${this.HOST}/tmbp/auth/${personalNumber}`);
-    // todo implement registration
-    return null;
+  registerUser(userAccountDto: UserAccountDto): Observable<UserAccountDto>{
+    return this.httpClient.post<UserAccountDto>(`${this.HOST}`, userAccountDto);
   }
 }

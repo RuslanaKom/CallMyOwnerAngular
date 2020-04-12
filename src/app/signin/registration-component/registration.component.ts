@@ -4,17 +4,16 @@ import {UserService} from '../../services/user.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 import {Router} from '@angular/router';
+import {UserAccountDto} from '../../models/generated';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit {
 
-  username: string;
-  email: string;
-  password: string;
+  userAccountDto: UserAccountDto;
   repeatPassword: string;
   validate: boolean;
   submitted: boolean;
@@ -25,6 +24,14 @@ export class RegistrationComponent {
               private userService: UserService,
               private modalService: NgbModal,
               private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.userAccountDto = {
+      username: null,
+      password: null,
+      defaultEmail: null,
+    };
   }
 
   validateInput() {
@@ -48,9 +55,9 @@ export class RegistrationComponent {
     }
     this.submitted = true;
     this.userService.clearAuthCookie();
-    this.userService.registerUser(this.username, this.password, this.email).subscribe(
+    this.userService.registerUser(this.userAccountDto).subscribe(
       () => {
-        this.router.navigate(['/']);
+        this.router.navigate(['home']);
       },
       error => {
         console.error('Error occurred during registration', error);
@@ -72,10 +79,10 @@ export class RegistrationComponent {
   }
 
   private passwordMatches() {
-    return this.password === this.repeatPassword;
+    return this.userAccountDto.password === this.repeatPassword;
   }
 
   private isPasswordWeak() {
-    return this.password.match('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,30}');
+    return this.userAccountDto.password.match('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,30}');
   }
 }
