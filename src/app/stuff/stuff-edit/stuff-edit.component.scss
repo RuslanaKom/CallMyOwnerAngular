@@ -1,0 +1,60 @@
+.limited-height {
+  height: 5%;
+  width: 100%
+}
+
+.center-window {
+  width: 50rem;
+}
+
+.sub-header {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  font-family: PFBeauSansPro-Thin, sans-serif;
+}
+
+.pep-question {
+  margin-bottom: 1.5rem;
+  float: left;
+  margin-top: 2.5rem;
+  margin-left: 1rem;
+}
+
+.field-label {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-family: PFBeauSansPro-Thin, sans-serif;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.pep-rca-radio-label {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9375rem;
+  line-height: 2.25rem;
+}
+
+.input-text {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+form {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-color: black;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-radius: 1.5rem;
+  padding: 2rem 2rem 0rem 2rem;
+}
+
+.button-save {
+  min-width: 10rem;
+  margin: 1.25rem 0 2.25rem;
+  margin-left: 6rem
+}
+
+.center {
+  margin-left: 6rem
+}

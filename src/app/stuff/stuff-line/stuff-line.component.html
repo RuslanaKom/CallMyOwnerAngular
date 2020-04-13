@@ -2,23 +2,32 @@
   <div fxFlex>
     <div fxFlexFill fxLayout="row">
       <main class="container main" fxFlex fxFlexFill>
-        <div class="row">
+        <div class="row col-lg-12">
 
-          <div class="row-style with-border" *ngIf="!stuffUnit">
+          <div class="row-style with-border " *ngIf="!stuffUnit">
             <div class="col-lg-1 name-header bold" i18n="@@stuff">Stuff</div>
             <div class="col-lg-2 offset-1 name-header bold" i18n="@@message">Message</div>
-            <div class="col-lg-1 offset-2 name-header bold" i18n="@@email">Contact email</div>
-            <div class="col-lg-1 offset-3 name-header bold" i18n="@@generate-qr">Generate QR</div>
+            <div class="col-lg-1 offset-1 name-header bold" i18n="@@email">Contact email</div>
+            <div class="col-lg-1 offset-2 name-header bold" i18n="@@generate-qr">Generate QR</div>
+            <div class="col-lg-1 offset-1 name-header bold" i18n="@@generate-qr">Remove item</div>
           </div>
 
           <div class="row-style with-border" *ngIf="stuffUnit">
-            <div class="col-lg-1 name-header">{{stuffUnit.stuffName}}</div>
+            <div class="col-lg-1 name-header">
+              <button class="button-transparent name-header" (click)="editStuff(stuffUnit.id)">
+                {{stuffUnit.stuffName}}
+              </button>
+            </div>
             <div class="col-lg-2 offset-1 sub-header">{{stuffUnit.defaultMessage}}</div>
-            <div class="col-lg-1 offset-2 sub-header">{{stuffUnit.contactEmail}}</div>
-            <div class="col-lg-1 offset-3">
-              <button (click)="generateQr(stuffUnit.id)">
-                <svg-icon src="assets/img/qr.svg" [svgStyle]="{'width.rem':'2rem','fill':'blue'}"
-                          [applyCss]="false"></svg-icon>
+            <div class="col-lg-1 offset-1 sub-header">{{stuffUnit.contactEmail}}</div>
+            <div class="col-lg-1 offset-2 qr">
+              <button class="button-transparent"(click)="generateQr(stuffUnit.id)">
+                <svg-icon src="assets/img/qr.svg"></svg-icon>
+              </button>
+            </div>
+            <div class="col-lg-1 offset-1 qr">
+              <button class="button-transparent"(click)="removeItem(stuffUnit.id)">
+                <svg-icon src="assets/img/trash.svg"></svg-icon>
               </button>
             </div>
           </div>

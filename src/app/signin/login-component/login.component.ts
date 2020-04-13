@@ -33,7 +33,7 @@ export class LoginComponent {
       (response) => {
         console.log(response);
         this.userService.setToken(response);
-        this.router.navigate(['home']);
+        this.router.navigate(['stuff']);
       },
       error => {
         console.error('Error occurred when login', error);

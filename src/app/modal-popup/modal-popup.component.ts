@@ -32,7 +32,7 @@ export class ModalPopupComponent implements OnInit {
   ];
 
   @Input() cornerBtnReason = 'CLOSED';
-  @Input() spinner: boolean;
+  @Input() qr = false;
 
   constructor(public activeModal: NgbActiveModal) {
   }

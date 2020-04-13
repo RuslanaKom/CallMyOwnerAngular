@@ -13,7 +13,6 @@
   font-family: PFBeauSansPro-Thin, sans-serif;
 }
 
-
 .field-label {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -22,9 +21,29 @@
   margin-top: 1rem;
 }
 
-
 .input-text {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
+.bold {
+  color: #017BD0;
+  font-family: PFBeauSansPro-Thin, sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.button-plus {
+  margin-left: 25rem;
+  background-color: transparent;
+  border-style: solid;
+  border-color: #222222;
+  outline: transparent;
+  border-radius: 3rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+button:hover{
+  color: darkviolet;
+}

@@ -9,6 +9,8 @@ import {ModalPopupComponent} from './modal-popup/modal-popup.component';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {StuffModule} from './stuff/stuff.module';
 import {HttpInterceptorProviders} from './interceptors/http-interceptor-providers';
+import {ContactModule} from './contact-owner/contact.module';
+
 
 @NgModule({
   entryComponents: [ModalPopupComponent],
@@ -23,6 +25,7 @@ import {HttpInterceptorProviders} from './interceptors/http-interceptor-provider
     HomePageModule,
     SigninModule,
     StuffModule,
+    ContactModule,
     AngularSvgIconModule.forRoot()
   ],
   providers: [HttpInterceptorProviders],

@@ -4,20 +4,24 @@ import {StuffListComponent} from './stuff-list-page/stuff-list.component';
 import {CommonModule} from '@angular/common';
 import {StuffLineComponent} from './stuff-line/stuff-line.component';
 import {AngularSvgIconModule} from 'angular-svg-icon';
+import {StuffEditComponent} from './stuff-edit/stuff-edit.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   entryComponents: [],
   declarations: [
-    StuffListComponent, StuffLineComponent
+    StuffListComponent, StuffLineComponent, StuffEditComponent
   ],
   imports: [
     CommonModule,
     CommonFunctionalityModule,
-    AngularSvgIconModule
+    AngularSvgIconModule,
+    ReactiveFormsModule,
   ],
   exports: [
     StuffListComponent,
     StuffLineComponent,
+    StuffEditComponent,
   ]
 })
 export class StuffModule {

@@ -1,8 +1,7 @@
 <div class="modal-header">
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss(cornerBtnReason)">
     <span aria-hidden="true">
-      <svg-icon src="assets/img/close.svg" class="close-icon" [svgStyle]="{'width.rem':'1.5rem','fill':'#000000'}"
-                [applyCss]="false"></svg-icon>
+      <svg-icon src="assets/img/close.svg" class="close-icon" [svgStyle]="{'width.rem':'1.5rem','fill':'#000000'}"></svg-icon>
     </span>
   </button>
 </div>
@@ -16,14 +15,13 @@
 </div>
 <div class="modal-footer">
   <div class="mx-auto" [ngStyle]="{'width': calcTotalWidth()}">
+    <img *ngIf="qr" src="http://127.0.0.1:8080/QR.png" width="100%" height="100%" alt="qr"/>
     <span *ngFor="let btn of buttons">
-      <button *ngIf="!spinner" (click)="activeModal.dismiss(btn.reason)"
+      <button (click)="activeModal.close(btn.reason)"
               type="button" class="btn shadow {{btn.active?'btn-primary':'btn-outline-dark'}} button-width-lg"
               [ngStyle]="{'min-width': '10rem', 'margin': '1.25rem 0 2.25rem ' + btn.marginLeft + 'rem'}">
         {{btn.label}}
       </button>
     </span>
-    <img *ngIf="spinner" src="../../assets/img/loans/spinner.gif" width="100%" height="100%" alt="spinner"/>
   </div>
 </div>
-

@@ -20,7 +20,15 @@
   font-family: PFBeauSansPro-Thin, sans-serif;
 }
 
+.button-transparent {
+  background-color: transparent;
+  border-style: hidden;
+  outline: transparent;
+}
+
 .with-border {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   border-color: black;
   border-style: solid;
   border-width: 0.1rem;
@@ -29,9 +37,28 @@
 
 .row-style {
   display: inline-flex;
-  width: 100rem;
+  width: 100%;
 }
 
-.bold{
+.bold {
   font-weight: bold;
+}
+
+svg:hover {
+  fill: darkviolet;
+}
+
+svg{
+  fill: blue;
+  width: 2rem;
+}
+
+.qr {
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  padding-left: 3rem;
+}
+
+button:hover{
+  color: darkviolet;
 }

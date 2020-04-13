@@ -40,8 +40,8 @@ export class NavbarComponent implements OnInit {
     }
 
     const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
-    modalRef.componentInstance.title = 'Log out';
-    modalRef.componentInstance.content = 'Log out user' + this.user;
+    modalRef.componentInstance.title = 'Log out user' + this.user;
+    modalRef.componentInstance.content = 'Entered information will not be saved';
     modalRef.componentInstance.buttons = [
       // tslint:disable-next-line:max-line-length
       {label: 'YES', reason: 'CONFIRMED', active: false, width: 10, marginLeft: 0},
