@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AngularSvgIconModule, SvgIconRegistryService} from 'angular-svg-icon';
 import {HomePageComponent} from './home-page-component/home-page.component';
 import {CommonFunctionalityModule} from '../common/common-functionality.module';
+import {AdvertisementModule} from '../advertisement/advertisement.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {CommonFunctionalityModule} from '../common/common-functionality.module';
     NgbModule,
     HttpClientModule,
     AngularSvgIconModule,
-    CommonFunctionalityModule
+    CommonFunctionalityModule,
+    AdvertisementModule
   ],
   providers: [CookieService, SvgIconRegistryService],
   exports: [HomePageComponent]

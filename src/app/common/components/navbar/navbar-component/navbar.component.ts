@@ -70,4 +70,8 @@ export class NavbarComponent implements OnInit {
   login() {
     this.router.navigate(['/login']);
   }
+
+  goHome() {
+    this.router.navigate(['home']);
+  }
 }

@@ -10,7 +10,6 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Get the auth token from the service.
     const authToken = this.userService.getAuthorizationToken();
     if (authToken) {
       request = request.clone({

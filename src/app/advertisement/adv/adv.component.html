@@ -1,0 +1,8 @@
+<div class="jumbotron jumbotron-fluid my-jumbo">
+  <div class="container">
+    <h4 class="sub-header">{{adv.header}}</h4>
+    <img *ngIf="adv.imageUrl" [src]=adv.imageUrl[0] width="30%" height="30%" alt="advertisement image"/>
+    <p class="lead">{{adv.text}}</p>
+    <p class="lead">{{adv.phone}}</p>
+  </div>
+</div>

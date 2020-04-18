@@ -1,0 +1,23 @@
+<p class="header">Recent ads</p>
+
+  <div class="row ">
+    <button class="adv-header">Lost</button>
+  </div>
+  <div class="row">
+      <div *ngFor="let lost of advListLost">
+        <app-adv class="col-1 offset-1" [adv]="lost"></app-adv>
+    </div>
+  </div>
+<div class="row ">
+    <button class="adv-header">Found</button>
+</div>
+<div class="row">
+  <div *ngFor="let found of advListFound">
+    <app-adv class="col-1 offset-1" [adv]="found"></app-adv>
+  </div>
+</div>
+<div class="row ">
+  <button class="adv-header">All ads</button>
+</div>
+  <app-spinner *ngIf="!advListLost ||! advListFound "></app-spinner>
+

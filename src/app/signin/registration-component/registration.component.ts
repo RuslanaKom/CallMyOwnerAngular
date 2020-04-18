@@ -35,6 +35,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   validateInput() {
+    console.log('validate11');
     this.validate = true;
     this.passwordWeak = false;
     this.passwordsNotMatch = false;
@@ -43,14 +44,18 @@ export class RegistrationComponent implements OnInit {
       return false;
     }
     if (this.isPasswordWeak()) {
+      console.log('validate');
       this.passwordWeak = true;
+      console.log(this.passwordWeak);
       return false;
     }
     return true;
   }
 
   register() {
+    console.log('1')
     if (!this.validateInput()) {
+      console.log('from register')
       return;
     }
     this.submitted = true;
@@ -83,6 +88,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   private isPasswordWeak() {
-    return this.userAccountDto.password.match('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,30}');
+    return !this.userAccountDto.password.match('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,30}');
   }
 }

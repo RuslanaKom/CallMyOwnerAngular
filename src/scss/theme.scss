@@ -1,4 +1,8 @@
-// Add commercial fonts
+
+@media screen {
+  body { color: #000000 }
+}
+
 @font-face {
   font-family: PFBeauSansPro-Light;
   src: url('/assets/fonts/PFBeauSansPro-Light.otf');

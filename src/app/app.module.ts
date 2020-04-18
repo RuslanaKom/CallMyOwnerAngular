@@ -10,6 +10,7 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
 import {StuffModule} from './stuff/stuff.module';
 import {HttpInterceptorProviders} from './interceptors/http-interceptor-providers';
 import {ContactModule} from './contact-owner/contact.module';
+import {AdvertisementModule} from './advertisement/advertisement.module';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {ContactModule} from './contact-owner/contact.module';
     SigninModule,
     StuffModule,
     ContactModule,
+    AdvertisementModule,
     AngularSvgIconModule.forRoot()
   ],
   providers: [HttpInterceptorProviders],

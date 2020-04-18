@@ -26,3 +26,15 @@ export interface StuffDto {
   contactEmail: string;
   defaultMessage: string;
 }
+
+export interface AdvDto {
+  id: string;
+  header: string;
+  text: string;
+  type: string;
+  category: string;
+  phone: string;
+  region: string;
+  imageUrl: string[];
+  date: Date;
+}

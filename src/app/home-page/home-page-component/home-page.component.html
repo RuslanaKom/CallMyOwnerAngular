@@ -1,19 +1,28 @@
-<div fxLayout="column" fxFlexFill>
-  <app-navbar fxFlex [logoutDirectly]="true"></app-navbar>
+<head>
+  <meta name="Lost and found things" content="Announcements about lost and found property, such as pets, clothes,
+   phones, toys and other things, helping to return the belongings to owner.
+   You have lost something - we will help you to find it.
+   You have found something - we will help you to find the owner.">
+</head>
 
-  <div fxFlex fxFlexFill>
+<main>
+  <div fxLayout="column" fxFlexFill>
+    <app-navbar fxFlex [logoutDirectly]="true"></app-navbar>
 
-    <div fxLayout="row" fxFlex fxFlexFill>
+    <div fxFlex fxFlexFill>
 
-      <div fxFlex fxFlexFill fxLayout="column" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxFlex fxFlexFill>
 
-        <main class="container padding-top-3">
-          <p> Some text here </p>
-        </main>
-        <div>
-          <span class="icon logo"></span>
+        <div fxFlex fxFlexFill fxLayout="column" fxLayoutAlign="space-between center">
+
+          <main class="container padding-top-3">
+            <app-adv-list></app-adv-list>
+          </main>
+          <div>
+            <span class="icon logo"></span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</main>
