@@ -9,5 +9,3 @@ ADD ./dist/call-my-owner  /usr/share/nginx/html
 #
 #CMD /vf/entry.sh
 
-#docker build -f Dockerfile -t ruslana/call_my_owner_front .
-#docker run -d -p 8080:80 ruslana/call_my_owner_front

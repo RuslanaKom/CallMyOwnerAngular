@@ -1,3 +1,10 @@
+# DOCKER
+
+docker build -f Dockerfile -t ruslana/call_my_owner_front .
+docker push ruslana/call_my_owner_front
+docker pull ruslana/call_my_owner_front
+docker run -d -p 8080:80 ruslana/call_my_owner_front
+
 # CallMyOwner
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
