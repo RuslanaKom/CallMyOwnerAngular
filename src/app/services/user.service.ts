@@ -27,8 +27,12 @@ export class UserService {
     const options = {
       headers: httpHeaders,
     };
-    console.log(options);
+    console.log('From login operation:' + options);
     return this.httpClient.post<HttpResponse<any>>(`${this.HOST}/signin`, userLoginDto, options);
+  }
+
+  setTokeObject(token: AccessToken) {
+    sessionStorage.setItem('access_token', JSON.stringify(token));
   }
 
   setToken(response: HttpResponse<any>) {
@@ -54,10 +58,12 @@ export class UserService {
   }
 
   getUser(): User | undefined {
+    console.log('GETTING USER');
     if (this.getAuthorizationToken()) {
-      const accessToken: AccessToken = JSON.parse(this.getAuthorizationToken());
+
+      const accessToken: string = this.getAuthorizationToken();
       if (accessToken) {
-        const decoded = jwt_decode(accessToken.accessToken);
+        const decoded = jwt_decode(accessToken);
         console.log(decoded);
         // @ts-ignore
         return decoded.sub;
@@ -77,5 +83,9 @@ export class UserService {
 
   registerUser(userAccountDto: UserAccountDto): Observable<UserAccountDto>{
     return this.httpClient.post<UserAccountDto>(`${this.HOST}`, userAccountDto);
+  }
+
+  confirmEmail(id: string) {
+    return this.httpClient.post<HttpResponse<any>>(`${this.HOST}/confirm`, id);
   }
 }

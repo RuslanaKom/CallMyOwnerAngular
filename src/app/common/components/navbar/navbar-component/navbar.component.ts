@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit {
   confirmLogout() {
     if (this.logoutDirectly) {
       this.userService.clearAuthCookie();
-      location.reload();
+      this.router.navigate(['/']);
       return;
     }
 
@@ -72,6 +72,6 @@ export class NavbarComponent implements OnInit {
   }
 
   goHome() {
-    this.router.navigate(['home']);
+    this.router.navigate(['/']);
   }
 }

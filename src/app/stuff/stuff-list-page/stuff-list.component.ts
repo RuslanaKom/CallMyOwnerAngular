@@ -1,6 +1,6 @@
 import {Component, ErrorHandler, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {StuffDto} from '../../models/generated';
+import {AccessToken, StuffDto} from '../../models/generated';
 import {StuffService} from '../../services/stuff.service';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +13,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class StuffListComponent implements OnInit {
 
   stuffList: StuffDto[];
+  accessToken: AccessToken;
 
   constructor(
     private errorHandler: ErrorHandler,

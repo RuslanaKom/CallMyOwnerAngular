@@ -50,6 +50,14 @@
                           style="min-width: 12rem;" (click)="login()" [disabled]="submitted">Login
                   </button>
 
+                  <div class="google-btn" (click)="signInWithGoogle()">
+                    <div class="google-icon-wrapper">
+                      <img class="google-icon" src="../../assets/img/google.svg" />
+                    </div>
+                    <p class="btn-text">Sign in with google</p>
+                    <p class="btn-text">Sign in with google</p>
+                  </div>
+
                   <button i18n="@@signIn-button" type="submit" class="btn btn-primary shadow mt-3 btn-primary"
                           style="min-width: 12rem;" (click)="register()" [disabled]="submitted">New to Call My Owner?
                     Create an account.

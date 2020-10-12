@@ -33,7 +33,7 @@ export class ContactComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['home']);
+    this.router.navigate(['/']);
   }
 
   popUpConfirmation() {

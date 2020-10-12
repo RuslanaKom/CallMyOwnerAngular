@@ -62,7 +62,7 @@ export class RegistrationComponent implements OnInit {
     this.userService.clearAuthCookie();
     this.userService.registerUser(this.userAccountDto).subscribe(
       () => {
-        this.router.navigate(['home']);
+        this.router.navigate(['/']);
       },
       error => {
         console.error('Error occurred during registration', error);

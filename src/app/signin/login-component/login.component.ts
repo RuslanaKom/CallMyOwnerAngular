@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {PlatformLocation} from '@angular/common';
 import {UserService} from '../../services/user.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 import {Router} from '@angular/router';
-import {UserLoginDto} from '../../models/generated';
+import {AccessToken, UserLoginDto} from '../../models/generated';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,8 @@ import {UserLoginDto} from '../../models/generated';
 export class LoginComponent {
   baseHref: string;
   userLoginDto: UserLoginDto = {
-    username : null,
-    password : null,
+    username: null,
+    password: null,
   };
   submitted: boolean;
 
@@ -56,5 +57,10 @@ export class LoginComponent {
 
   register() {
     this.router.navigate(['/registration']);
+  }
+
+  signInWithGoogle() {
+    this.userService.clearAuthCookie();
+    window.location.href = environment.HOST + '/oauth2/authorization/google';
   }
 }
