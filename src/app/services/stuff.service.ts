@@ -15,7 +15,11 @@ export class StuffService {
   }
 
   fetchUserStuff(): Observable<StuffDto[]> {
-    return this.httpClient.get<StuffDto[]>(`${this.HOST}`);
+    let params = new HttpParams();
+    params = params.append('offset', '0');
+    params = params.append('size', '10');
+    params = params.append('direction', 'DESC');
+    return this.httpClient.get<StuffDto[]>(`${this.HOST}`, {params});
   }
 
   generateQr(id: string): Observable<File> {

@@ -232,6 +232,11 @@
     glob "7.1.2"
     yargs "15.3.0"
 
+"@angular/material@9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-9.2.0.tgz#1b6f0a2e115f93885d7fc2dc4b258d8c9cf6821f"
+  integrity sha512-KKzEIVh6/m56m+Ao8p4PK0SyEr0574l3VP2swj1qPag3u+FYgemmXCGTaChrKdDsez+zeTCPXImBGXzE6NQ80Q==
+
 "@angular/platform-browser-dynamic@~9.1.1":
   version "9.1.1"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-9.1.1.tgz#aaaa31a8ddf6e810755644180703118c792b8ca0"
@@ -4939,6 +4944,19 @@ jszip@^3.1.3:
     pako "~1.0.2"
     readable-stream "~2.3.6"
     set-immediate-shim "~1.0.1"
+
+jw-angular-pagination@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/jw-angular-pagination/-/jw-angular-pagination-1.2.0.tgz#8c7799df72a6416b280ef225857a9723bff7b0e6"
+  integrity sha512-rHkFzeOeRybUtpwImf4FJQ4MhGH/5sqW6c4Za6avaR6iZUrIZCtPGE1RyCNjyPsX4KOmJk5lyzORn5ziGKmWkw==
+  dependencies:
+    jw-paginate "^1.0.4"
+    tslib "^1.10.0"
+
+jw-paginate@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/jw-paginate/-/jw-paginate-1.0.4.tgz#c6e7dbb4a6e9d62e501c7f9562a3a2a33d77c9b9"
+  integrity sha512-W0bv782exgCoynUL/egbRpaYwf/r6T6e02H870H5u3hfSgEYrxgz5POwmFF5aApS6iPi6yhZ0VF8IbafNFsntA==
 
 jwt-decode@^2.2.0:
   version "2.2.0"

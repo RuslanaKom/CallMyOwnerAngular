@@ -11,6 +11,16 @@
             </div>
             <app-spinner *ngIf="!messages"></app-spinner>
           </div>
+          <div class="card-footer pb-0 pt-3">
+            <mat-paginator #paginator
+                          [length]="length"
+                          [pageIndex]="pageIndex"
+                          [pageSize]="pageSize"
+                          [pageSizeOptions]="[5, 10, 25, 100]"
+                          (page)="pageEvent = onChangePage2($event)"
+                           >
+            </mat-paginator>
+          </div>
         </div>
 
       </main>

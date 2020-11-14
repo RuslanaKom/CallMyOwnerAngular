@@ -14,9 +14,12 @@ export class MessageService {
     this.HOST = environment.HOST + '/message';
   }
 
-  getMessages(id: string): Observable<Message[]> {
+  getMessages(id: string, offset: number, size: number): Observable<Message[]> {
     let params = new HttpParams();
     params = params.append('stuffId', id);
+    params = params.append('offset', String(offset));
+    params = params.append('size', String(size));
+    params = params.append('direction', 'DESC');
     return this.httpClient.get<Message[]>(`${this.HOST}`, {params});
   }
 }

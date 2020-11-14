@@ -8,6 +8,8 @@ import {MessagesComponent} from './messages-component/messages.component';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {MessageLineComponent} from './message-line/message-line.component';
+import {JwPaginationModule} from 'jw-angular-pagination';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import {MessageLineComponent} from './message-line/message-line.component';
     AngularSvgIconModule,
     CommonFunctionalityModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    JwPaginationModule,
+    MatPaginatorModule
   ],
   providers: [CookieService, SvgIconRegistryService],
   exports: [MessagesComponent, MessageLineComponent]
