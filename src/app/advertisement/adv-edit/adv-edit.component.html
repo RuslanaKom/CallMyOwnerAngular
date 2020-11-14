@@ -15,12 +15,9 @@
                 <label class="field-label" for="name" i18n="@@guarantor-info-other-loans">Item name</label>
                 <input type="text" class="form-control input-text" id="name"
                   formControlName="stuffName" [(ngModel)]="stuffUnit.stuffName">
-                <label class="field-label" for="message" i18n="@@guarantor-info-monthly-income">Message text</label>
+                <label class="field-label" for="message" i18n="@@guarantor-info-monthly-income">Contact form message text</label>
                 <input type="text" class="form-control input-text" id="message"
                   formControlName="defaultMessage" [(ngModel)]="stuffUnit.defaultMessage">
-                <label class="field-label" for="email" i18n="@@guarantor-info-dividend">Contact email for this item</label>
-                <input type="email" class="form-control input-text" id="email"
-                  formControlName="contactEmail" [(ngModel)]="stuffUnit.contactEmail">
               </div>
               <button (click)="saveInput()" type="button" class="btn shadow btn-primary button-width-lg button-save">
                 Save

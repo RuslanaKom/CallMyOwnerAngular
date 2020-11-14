@@ -1,0 +1,19 @@
+<div fxLayout="column" fxFlexFill>
+  <app-navbar fxFlex [logoutDirectly]="true"></app-navbar>
+  <div fxFlex>
+    <div fxFlexFill fxLayout="row">
+      <main class="container main" fxFlex fxFlexFill>
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <app-message-line></app-message-line>
+            <div *ngFor="let message of messages">
+              <app-message-line [message]="message"></app-message-line>
+            </div>
+            <app-spinner *ngIf="!messages"></app-spinner>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</div>

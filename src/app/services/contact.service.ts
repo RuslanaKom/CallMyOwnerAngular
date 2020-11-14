@@ -20,7 +20,7 @@ export class ContactService {
       'Cache-Control': 'no-cache'
     });
     let params = new HttpParams();
-    params = params.append('id', id);
+    params = params.append('stuffId', id);
     const options = {
       httpHeaders,
       params

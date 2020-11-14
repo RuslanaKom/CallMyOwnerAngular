@@ -1,0 +1,22 @@
+<div fxLayout="column" fxFlexFill xmlns="http://www.w3.org/1999/html">
+  <div fxFlex>
+    <div fxFlexFill fxLayout="row">
+      <main class="container main" fxFlex fxFlexFill>
+        <div class="row col-lg-12">
+
+          <div class="row-style with-border " *ngIf="!message">
+            <div class="col-lg-1 name-header bold" i18n="@@stuff">Date</div>
+            <div class="col-lg-5 offset-1 name-header bold" i18n="@@message">Message</div>
+          </div>
+
+          <div class="row-style with-border" *ngIf="message">
+            <div class="col-lg-1 sub-header">
+              {{ message.receivedDate | date:'dd/MM/yyyy HH:mm:ss'}}
+            </div>
+            <div class="col-lg-5 offset-1 sub-header">{{message.messageText}}</div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

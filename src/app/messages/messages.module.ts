@@ -4,14 +4,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 import {AngularSvgIconModule, SvgIconRegistryService} from 'angular-svg-icon';
 import {CommonFunctionalityModule} from '../common/common-functionality.module';
-import {ContactComponent} from './contact-component/contact.component';
+import {MessagesComponent} from './messages-component/messages.component';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {MessageLineComponent} from './message-line/message-line.component';
 
 
 @NgModule({
   entryComponents: [],
-  declarations: [ContactComponent],
+  declarations: [MessagesComponent, MessageLineComponent],
   imports: [
     NgbModule,
     HttpClientModule,
@@ -21,7 +22,7 @@ import {CommonModule} from '@angular/common';
     CommonModule
   ],
   providers: [CookieService, SvgIconRegistryService],
-  exports: [ContactComponent]
+  exports: [MessagesComponent, MessageLineComponent]
 })
 
-export class ContactModule { }
+export class MessagesModule { }

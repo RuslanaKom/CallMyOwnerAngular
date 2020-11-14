@@ -40,4 +40,10 @@ export class StuffService {
     return this.httpClient.delete<StuffDto>(`${this.HOST}`, {params});
   }
 
+  getDefaultMessage(id: string): Observable<string> {
+    let params = new HttpParams();
+    params = params.append('stuffId', id);
+    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    return this.httpClient.get(`${this.HOST}/id/defaultMessage`, {headers, responseType: 'text', params});
+  }
 }

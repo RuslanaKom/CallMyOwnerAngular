@@ -8,6 +8,7 @@ import {StuffEditComponent} from './stuff/stuff-edit/stuff-edit.component';
 import {ContactComponent} from './contact-owner/contact-component/contact.component';
 import {TokenComponent} from './signin/token-component/token.component';
 import {ConfirmComponent} from './signin/confirm-component/confirm.component';
+import {MessagesComponent} from './messages/messages-component/messages.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'item/:id', component: StuffEditComponent},
   {path: 'contact/:id', component: ContactComponent},
   {path: 'confirm/:id', component: ConfirmComponent},
+  {path: 'messages/:id', component: MessagesComponent},
 ];
 
 @NgModule({

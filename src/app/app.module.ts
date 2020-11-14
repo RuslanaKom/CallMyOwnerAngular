@@ -11,6 +11,7 @@ import {StuffModule} from './stuff/stuff.module';
 import {HttpInterceptorProviders} from './interceptors/http-interceptor-providers';
 import {ContactModule} from './contact-owner/contact.module';
 import {AdvertisementModule} from './advertisement/advertisement.module';
+import {MessagesModule} from './messages/messages.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {AdvertisementModule} from './advertisement/advertisement.module';
     SigninModule,
     StuffModule,
     ContactModule,
+    MessagesModule,
     AdvertisementModule,
     AngularSvgIconModule.forRoot()
   ],

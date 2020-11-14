@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {StuffDto} from '../../models/generated';
 import {StuffService} from '../../services/stuff.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 
 @Component({
   selector: 'app-stuff-line',
@@ -39,5 +38,9 @@ export class StuffLineComponent {
       console.log('deleted');
       location.reload();
     });
+  }
+
+  getMessages(id: string) {
+    this.router.navigate(['messages/' + id]);
   }
 }

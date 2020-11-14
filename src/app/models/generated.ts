@@ -23,8 +23,12 @@ export interface StuffDto {
   id: string;
   userId: string;
   stuffName: string;
-  contactEmail: string;
   defaultMessage: string;
+}
+
+export interface Message {
+  messageText: string;
+  receivedDate: Date;
 }
 
 export interface AdvDto {

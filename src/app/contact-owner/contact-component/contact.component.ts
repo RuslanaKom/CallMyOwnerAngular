@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {StuffService} from '../../services/stuff.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ContactService} from '../../services/contact.service';
-import {StuffDto} from '../../models/generated';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
@@ -13,10 +13,12 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ContactComponent implements OnInit {
   private id: string;
+  ownersDefaultMessage: string;
   message: string;
 
   constructor(
     private contactService: ContactService,
+    private stuffService: StuffService,
     private router: Router,
     private route: ActivatedRoute,
     private modalService: NgbModal) {
@@ -24,12 +26,21 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    this.stuffService.getDefaultMessage(id).subscribe(response => {
+      if (response) {
+          this.ownersDefaultMessage = response;
+        }
+      }
+    );
     this.id = id;
   }
 
   sendMessage() {
     this.contactService.sendMessageToOwner(this.id, this.message)
-      .subscribe(() => {this.message = null; this.popUpConfirmation(); });
+      .subscribe(() => {
+        this.message = null;
+        this.popUpConfirmation();
+      });
   }
 
   cancel() {

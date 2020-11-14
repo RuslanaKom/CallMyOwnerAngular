@@ -43,7 +43,6 @@ export class StuffEditComponent implements OnInit {
       id: null,
       userId: null,
       stuffName: null,
-      contactEmail: null,
       defaultMessage: null
     };
   }
@@ -51,7 +50,6 @@ export class StuffEditComponent implements OnInit {
   prepareForm() {
     this.stuffForm = new FormGroup({
       stuffName: new FormControl(this.stuffUnit.stuffName, Validators.required),
-      contactEmail: new FormControl(this.stuffUnit.contactEmail, Validators.email),
       defaultMessage: new FormControl(this.stuffUnit.defaultMessage),
     });
   }
