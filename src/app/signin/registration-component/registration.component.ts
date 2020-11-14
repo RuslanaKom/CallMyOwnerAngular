@@ -62,6 +62,7 @@ export class RegistrationComponent implements OnInit {
     this.userService.clearAuthCookie();
     this.userService.registerUser(this.userAccountDto).subscribe(
       () => {
+        this.showConfirmationPopUp();
         this.router.navigate(['/']);
       },
       error => {
@@ -81,6 +82,13 @@ export class RegistrationComponent implements OnInit {
     modalRef.componentInstance.content = 'A problem with the identification occurred. ' +
       'There may be several reasons why it happened. ' +
       'Please try again or contact our support for more information.';
+  }
+
+  private showConfirmationPopUp() {
+    const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
+    modalRef.componentInstance.spinner = false;
+    modalRef.componentInstance.title = 'Confirm your registration';
+    modalRef.componentInstance.content = 'Confirmation email has been sent to' + this.userAccountDto.defaultEmail + '. Please check your inbox and confirm you registration.';
   }
 
   private passwordMatches() {
