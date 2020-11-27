@@ -29,10 +29,14 @@ export class MessagesComponent implements OnInit {
     this.messageService.getMessages(this.stuffId, 0, 5).subscribe(response => {
         if (response) {
           this.messages = response;
-          console.log(this.messages);
         }
       }
     );
+    this.messageService.getMessagesCount().subscribe(response => {
+      if (response) {
+        this.length = response;
+      }
+    });
   }
 
   onChangePage2($event: PageEvent) {

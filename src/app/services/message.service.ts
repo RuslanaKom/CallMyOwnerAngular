@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {Message, StuffDto} from '../models/generated';
+import {Message} from '../models/generated';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -21,5 +21,9 @@ export class MessageService {
     params = params.append('size', String(size));
     params = params.append('direction', 'DESC');
     return this.httpClient.get<Message[]>(`${this.HOST}`, {params});
+  }
+
+  getMessagesCount() {
+    return this.httpClient.get<number>(`${this.HOST}` + '/count');
   }
 }

@@ -27,8 +27,10 @@ export interface StuffDto {
 }
 
 export interface Message {
+  id: string;
   messageText: string;
   receivedDate: Date;
+  isNew: boolean;
 }
 
 export interface AdvDto {
