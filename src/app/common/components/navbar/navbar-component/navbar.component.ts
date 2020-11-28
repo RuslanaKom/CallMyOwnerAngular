@@ -28,8 +28,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.userService.getUser();
-    console.log('init navbar');
-    console.log('user in navabr' + this.user);
   }
 
   confirmLogout() {

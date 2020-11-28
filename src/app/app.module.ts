@@ -12,6 +12,7 @@ import {HttpInterceptorProviders} from './interceptors/http-interceptor-provider
 import {ContactModule} from './contact-owner/contact.module';
 import {AdvertisementModule} from './advertisement/advertisement.module';
 import {MessagesModule} from './messages/messages.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {MessagesModule} from './messages/messages.module';
     ModalPopupComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     CommonFunctionalityModule,

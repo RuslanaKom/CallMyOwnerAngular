@@ -26,4 +26,9 @@ export class MessageService {
   getMessagesCount() {
     return this.httpClient.get<number>(`${this.HOST}` + '/count');
   }
+
+  updateMessages(ids: string []) {
+    console.log('message update');
+    return this.httpClient.post<void>(`${this.HOST}`, ids);
+  }
 }

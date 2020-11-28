@@ -58,13 +58,11 @@ export class UserService {
   }
 
   getUser(): User | undefined {
-    console.log('GETTING USER');
     if (this.getAuthorizationToken()) {
 
       const accessToken: string = this.getAuthorizationToken();
       if (accessToken) {
         const decoded = jwt_decode(accessToken);
-        console.log(decoded);
         // @ts-ignore
         return decoded.sub;
       }

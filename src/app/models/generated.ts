@@ -30,7 +30,7 @@ export interface Message {
   id: string;
   messageText: string;
   receivedDate: Date;
-  isNew: boolean;
+  new: boolean;
 }
 
 export interface AdvDto {
