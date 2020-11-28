@@ -4,6 +4,7 @@ import {AccessToken, StuffDto} from '../../models/generated';
 import {StuffService} from '../../services/stuff.service';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {MessageService} from '../../services/message.service';
 
 @Component({
   selector: 'app-stuff-list',
@@ -30,6 +31,7 @@ export class StuffListComponent implements OnInit {
           console.log(this.stuffList);
         }
       );
+
   }
 
   popupQr(stuffUnit: StuffDto) {

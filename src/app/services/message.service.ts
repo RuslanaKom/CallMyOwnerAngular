@@ -24,11 +24,17 @@ export class MessageService {
   }
 
   getMessagesCount() {
-    return this.httpClient.get<number>(`${this.HOST}` + '/count');
+    return this.httpClient.get<number>(`${this.HOST}` + '/user/count');
   }
 
   updateMessages(ids: string []) {
     console.log('message update');
     return this.httpClient.post<void>(`${this.HOST}`, ids);
+  }
+
+  newMessagesExist(stuffId: string) {
+    let params = new HttpParams();
+    params = params.append('stuffId', stuffId);
+    return this.httpClient.get<boolean>(`${this.HOST}` + '/exists/new', {params} );
   }
 }

@@ -42,56 +42,38 @@ export class MessagesComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.setMessagesAsSeen();
+  getNewMessagesIds(): string[] {
+    return this.messages.filter(m => m.new).map(m => m.id);
   }
 
-  // onChangePage($event: PageEvent) {
-  //   this.setMessagesAsSeen().subscribe(response => {
-  //     this.messageService.getMessages(this.stuffId, $event.pageIndex, $event.pageSize).subscribe(response2 => {
-  //         if (response2) {
-  //           this.messages = response2;
-  //           this.pageIndex = $event.pageIndex;
-  //           this.pageSize = $event.pageSize;
-  //         }
-  //       }
-  //     );
-  //   });
-  //   return null;
-  // }
-
+  ngOnDestroy(): void {
+    const newMessagesIds = this.getNewMessagesIds();
+    if (this.getNewMessagesIds().length) {
+      this.messageService.updateMessages(newMessagesIds).subscribe();
+    }
+  }
 
   onChangePage($event: PageEvent) {
-    console.log($event);
-    console.log(this.sbj.getValue());
-    this.setMessagesAsSeen();
-    this.sbj.subscribe((result) => {
-      this.messageService.getMessages(this.stuffId, $event.pageIndex, $event.pageSize).subscribe(response2 => {
-          if (response2) {
-            this.messages = response2;
-            this.pageIndex = $event.pageIndex;
-            this.pageSize = $event.pageSize;
-          }
-        }
+    const newMessagesIds = this.getNewMessagesIds();
+    if (newMessagesIds.length) {
+      this.messageService.updateMessages(newMessagesIds).subscribe(() =>
+        this.getNextMessagesPage($event)
       );
-    });
+    } else {
+      this.getNextMessagesPage($event);
+    }
     return null;
   }
 
-  // setMessagesAsSeen() {
-  //   const newMessagesIds = this.messages.filter(m => m.new).map(m => m.id);
-  //   return this.messageService.updateMessages(newMessagesIds);
-  // }
-
-  setMessagesAsSeen() {
-    const newMessagesIds = this.messages.filter(m => m.new).map(m => m.id);
-    if (newMessagesIds.length) {
-      this.messageService.updateMessages(newMessagesIds).subscribe(() =>
-        this.sbj.next(true)
-      );
-    }
-    else {
-      this.sbj.next(false);
-    }
+  getNextMessagesPage($event: PageEvent) {
+    this.messageService.getMessages(this.stuffId, $event.pageIndex, $event.pageSize).subscribe(response2 => {
+        if (response2) {
+          this.messages = response2;
+          this.pageIndex = $event.pageIndex;
+          this.pageSize = $event.pageSize;
+        }
+      }
+    );
   }
+
 }
