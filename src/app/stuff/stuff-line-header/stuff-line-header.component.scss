@@ -7,12 +7,6 @@
   width: 50rem;
 }
 
-.sub-header {
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-  font-family: PFBeauSansPro-Thin, sans-serif;
-}
-
 .name-header {
   color: #017BD0;
   font-size: 1.3rem;
@@ -24,6 +18,19 @@
   background-color: transparent;
   border-style: hidden;
   outline: transparent;
+  padding: 0;
+  margin: 0;
+  height: 2rem;
+}
+
+
+.asc{
+  fill: #36c;
+  transform: rotate(180deg);
+}
+
+.desc {
+  fill: #36c;
 }
 
 .with-border {
@@ -32,15 +39,6 @@
   border-color: black;
   border-style: solid;
   border-width: 0.1rem;
-  border-radius: 1.5rem;
-}
-
-.with-border-blue {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-color: royalblue;
-  border-style: solid;
-  border-width: 0.2rem;
   border-radius: 1.5rem;
 }
 

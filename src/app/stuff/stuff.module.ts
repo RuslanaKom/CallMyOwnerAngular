@@ -6,22 +6,28 @@ import {StuffLineComponent} from './stuff-line/stuff-line.component';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {StuffEditComponent} from './stuff-edit/stuff-edit.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortHeader, MatSortModule} from '@angular/material/sort';
+import {StuffLineHeaderComponent} from './stuff-line-header/stuff-line-header.component';
 
 @NgModule({
   entryComponents: [],
   declarations: [
-    StuffListComponent, StuffLineComponent, StuffEditComponent
+    StuffListComponent, StuffLineComponent, StuffEditComponent, StuffLineHeaderComponent
   ],
   imports: [
     CommonModule,
     CommonFunctionalityModule,
     AngularSvgIconModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   exports: [
     StuffListComponent,
     StuffLineComponent,
     StuffEditComponent,
+    StuffLineHeaderComponent
   ]
 })
 export class StuffModule {

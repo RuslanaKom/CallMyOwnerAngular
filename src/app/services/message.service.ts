@@ -23,8 +23,10 @@ export class MessageService {
     return this.httpClient.get<Message[]>(`${this.HOST}`, {params});
   }
 
-  getMessagesCount() {
-    return this.httpClient.get<number>(`${this.HOST}` + '/user/count');
+  getMessagesCount(stuffId: string) {
+    let params = new HttpParams();
+    params = params.append('stuffId', stuffId);
+    return this.httpClient.get<number>(`${this.HOST}` + '/count', {params});
   }
 
   updateMessages(ids: string []) {

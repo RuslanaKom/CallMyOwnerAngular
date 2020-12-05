@@ -4,6 +4,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {StuffService} from '../../services/stuff.service';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
+import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-stuff-edit',
@@ -18,6 +21,7 @@ export class StuffEditComponent implements OnInit {
   constructor(
     private stuffService: StuffService,
     private router: Router,
+    private modalService: NgbModal,
     private route: ActivatedRoute) {
   }
 
@@ -57,8 +61,22 @@ export class StuffEditComponent implements OnInit {
   saveInput() {
     if (this.stuffForm.valid) {
       this.stuffService.saveUpdateStuff(this.stuffUnit)
-        .subscribe(() => this.router.navigate(['stuff']));
+        .subscribe(() => {
+            this.router.navigate(['stuff']);
+          },
+          error => {
+            console.log(error);
+            this.showErrorPopUp(error);
+          },
+        );
     }
+  }
+
+  private showErrorPopUp(error: HttpErrorResponse) {
+    const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
+    modalRef.componentInstance.spinner = false;
+    modalRef.componentInstance.title = 'Cannot save the item';
+    modalRef.componentInstance.content = error.error;
   }
 
   cancel() {

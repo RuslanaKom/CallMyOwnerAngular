@@ -1,16 +1,8 @@
-<div fxLayout="column" fxFlexFill xmlns="http://www.w3.org/1999/html">
+<div fxFlexFill xmlns="http://www.w3.org/1999/html">
   <div fxFlex>
     <div fxFlexFill fxLayout="row">
-      <main class="container main" fxFlex fxFlexFill>
-        <div class="row col-lg-12">
-
-          <div class="row-style with-border " *ngIf="!stuffUnit">
-            <div class="col-lg-1 name-header bold" i18n="@@stuff">Stuff</div>
-            <div class="col-lg-3 offset-1 name-header bold" i18n="@@message">Owner's message</div>
-            <div class="col-lg-1 offset-1 name-header bold" i18n="@@generate-qr">Messages</div>
-            <div class="col-lg-1 offset-1 name-header bold" i18n="@@generate-qr">Generate QR</div>
-            <div class="col-lg-1 offset-1 name-header bold" i18n="@@generate-qr">Remove item</div>
-          </div>
+      <main class="main" fxFlex fxFlexFill>
+        <div class="row">
 
           <div class="row-style with-border" *ngIf="stuffUnit">
             <div class="col-lg-1 name-header">
@@ -30,7 +22,7 @@
               </button>
             </div>
             <div class="col-lg-1 offset-1 qr">
-              <button class="button-transparent"(click)="removeItem(stuffUnit.id)">
+              <button class="button-transparent"(click)="removeItem()">
                 <svg-icon src="assets/img/trash.svg"></svg-icon>
               </button>
             </div>

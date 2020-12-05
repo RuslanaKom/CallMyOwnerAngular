@@ -1,0 +1,23 @@
+<div fxFlexFill xmlns="http://www.w3.org/1999/html">
+  <div fxFlex>
+    <div fxFlexFill fxLayout="row">
+      <main class="main" fxFlex fxFlexFill>
+        <div class="row">
+
+          <div class="row-style with-border">
+            <div class="col-md-1 name-header bold" i18n="@@stuff">Stuff</div>
+            <button class="button-transparent" (click)="changeSortDirection()">
+              <svg-icon
+                [svgClass]="isDefault ? 'asc':'desc'"
+                src="assets/img/down-arrow.svg"></svg-icon>
+            </button>
+            <div class="col-md-3 offset-1 name-header bold" i18n="@@message">Owner's message</div>
+            <div class="col-md-1 offset-1 name-header bold" i18n="@@generate-qr">Messages</div>
+            <div class="col-md-1 offset-1 name-header bold" i18n="@@generate-qr">Generate QR</div>
+            <div class="col-md-1 offset-1 name-header bold" i18n="@@generate-qr">Remove item</div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

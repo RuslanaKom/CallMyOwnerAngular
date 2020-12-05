@@ -4,6 +4,7 @@ import {StuffDto} from '../../models/generated';
 import {StuffService} from '../../services/stuff.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MessageService} from '../../services/message.service';
+import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 
 @Component({
   selector: 'app-stuff-line',
@@ -30,9 +31,9 @@ export class StuffLineComponent implements OnInit {
   ngOnInit() {
     if (this.stuffUnit) {
       this.messageService.newMessagesExist(this.stuffUnit.id).subscribe(result => {
-        console.log('AAAAA ' + result);
-        this.hasNewMessages = result; }
-        );
+          this.hasNewMessages = result;
+        }
+      );
     }
   }
 
@@ -45,15 +46,29 @@ export class StuffLineComponent implements OnInit {
     this.router.navigate(['item', id]).then();
   }
 
-  removeItem(id: string) {
-    console.log('remove');
-    this.stuffService.deleteItem(id).subscribe(() => {
-      console.log('deleted');
-      location.reload();
-    });
+  removeItem() {
+    this.showConfirmationPopUp();
   }
 
   getMessages(id: string) {
     this.router.navigate(['messages/' + id]);
+  }
+
+  private showConfirmationPopUp() {
+    const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
+    modalRef.componentInstance.spinner = false;
+    modalRef.componentInstance.content = 'Are you sure you want to delete ' + this.stuffUnit.stuffName + ' and all messages related to it?';
+    modalRef.componentInstance.buttons = [
+      {label: 'YES', reason: 'CONFIRMED', active: false, width: 10, marginLeft: 0},
+      {label: 'NO', reason: 'CANCELLED', active: true, width: 10, marginLeft: 2}];
+    modalRef.componentInstance.cornerBtnReason = 'CLOSED';
+    modalRef.result.catch(reason => {
+      console.log('REASON ' + reason);
+      if (reason === 'CONFIRMED') {
+        this.stuffService.deleteItem(this.stuffUnit.id).subscribe(() => {
+          location.reload();
+        });
+      }
+    });
   }
 }

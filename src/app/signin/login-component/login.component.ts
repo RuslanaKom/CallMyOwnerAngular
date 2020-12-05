@@ -50,9 +50,7 @@ export class LoginComponent {
     const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
     modalRef.componentInstance.spinner = false;
     modalRef.componentInstance.title = 'Login error';
-    modalRef.componentInstance.content = 'A problem with the identification occurred. ' +
-      'There may be several reasons why it happened. ' +
-      'Please try again or contact our support for more information.';
+    modalRef.componentInstance.content = 'Wrong password or username.';
   }
 
   register() {

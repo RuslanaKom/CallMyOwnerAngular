@@ -18,7 +18,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
   pageSize = 5;
   length = 0;
   pageSizeOptions: number[] = [5, 10, 15, 20];
-  sbj: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
     private messageService: MessageService,
@@ -29,13 +28,13 @@ export class MessagesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.stuffId = id;
-    this.messageService.getMessages(this.stuffId, 0, 5).subscribe(response => {
+    this.messageService.getMessages(this.stuffId, 0, this.pageSize).subscribe(response => {
         if (response) {
           this.messages = response;
         }
       }
     );
-    this.messageService.getMessagesCount().subscribe(response => {
+    this.messageService.getMessagesCount(this.stuffId).subscribe(response => {
       if (response) {
         this.length = response;
       }

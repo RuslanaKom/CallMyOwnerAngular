@@ -1,16 +1,24 @@
-<div fxLayout="column" fxFlexFill>
+<div fxFlexFill>
   <app-navbar fxFlex [logoutDirectly]="true"></app-navbar>
   <div fxFlex>
     <div fxFlexFill fxLayout="row">
       <main class="container main" fxFlex fxFlexFill>
-        <div class="row">
-        </div>
-          <button class="bold button-plus" (click)="createNewStuff()">+</button>
-        <app-stuff-line></app-stuff-line>
+        <button class="bold button-plus" (click)="createNewStuff()">+</button>
+        <app-stuff-line-header (directionChanged)="onSortDirectionChanged($event)"></app-stuff-line-header>
         <div *ngFor="let stuffUnit of stuffList">
           <app-stuff-line (popupGenerated)="popupQr($event)" [stuffUnit]="stuffUnit"></app-stuff-line>
         </div>
         <app-spinner *ngIf="!stuffList"></app-spinner>
+        <div class="row justify-content-center">
+        <mat-paginator #paginator
+                       [length]="length"
+                       [pageIndex]="pageIndex"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="pageSizeOptions"
+                       (page)="pageEvent = onChangePage($event)"
+        >
+        </mat-paginator>
+        </div>
       </main>
     </div>
   </div>

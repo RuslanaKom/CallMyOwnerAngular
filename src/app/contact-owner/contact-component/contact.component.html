@@ -3,31 +3,61 @@
   <div fxFlex>
     <div fxFlexFill fxLayout="row">
       <main class="container main" fxFlex fxFlexFill>
-        <div class="row justify-content-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-            <div id="userMessage" *ngIf="ownersDefaultMessage">
-              <div class="header center" i18n="@@guarantor-info-header">Stuff owner says:</div>
-              <div class="sub-header center" i18n="@@guarantor-info-header">{{ownersDefaultMessage}}</div>
+        <div *ngIf="id">
+          <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <div id="userMessage" *ngIf="ownersDefaultMessage">
+                <div class="header center" i18n="@@guarantor-info-header">Stuff owner says:</div>
+                <div class="sub-header center" i18n="@@guarantor-info-header">{{ownersDefaultMessage}}</div>
+              </div>
+              <div class="header center" i18n="@@guarantor-info-header">Send your message to stuff owner:</div>
+              <div class="sub-header center" i18n="@@guarantor-info-header">* Don't forget to include your contact
+                information,<br>
+                if you want the owner to get in touch with you.
+              </div>
             </div>
-            <div class="header center" i18n="@@guarantor-info-header">Send your message to stuff owner:</div>
-            <div class="sub-header center" i18n="@@guarantor-info-header">* Don't forget to include your contact
-              information,<br>
-              if you want the owner to get in touch with you.
+          </div>
+          <div class="row justify-content-center mr-lg-5 mr-md-5 mr-sm-1 mr-xs-0">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <div *ngIf="messagetext.touched && messagetext.invalid" class="alert alert-danger">
+                <div i18n="@@signIn-validation-username-required">
+                  <p>Please enter message text.</p>
+                </div>
+              </div>
+              <div>
+                <textarea [(ngModel)]="message" #messagetext="ngModel" class="text-message" required="true"></textarea>
+              </div>
+              <button (click)="sendMessage()" type="button" class="btn shadow btn-primary button-width-lg button-save"
+                      [ngClass]="[(messagetext.touched && messagetext.invalid) ? 'vf-btn-disabled' : 'btn-primary']" [disabled]="messagetext.invalid">
+                Send
+              </button>
+              <button (click)="cancel()" type="button"
+                      class="btn shadow btn-primary button-width-lg button-save button-cancel">
+                Cancel
+              </button>
             </div>
           </div>
         </div>
-        <div class="row justify-content-center mr-lg-5 mr-md-5 mr-sm-1 mr-xs-0">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-            <div>
-              <textarea [(ngModel)]="message" class="text-message"></textarea>
+        <div *ngIf="notFound">
+          <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="header" i18n="@@guarantor-info-header">
+              Unfortunately we cannot find contacts of the owner :(
+              </div>
+              <div class="sub-header" i18n="@@guarantor-info-header"><b>What has possibly happened:</b></div>
+              <div class="text" i18n="@@guarantor-info-header">
+                <b>1)</b> You have occasionally changed the link address in your browser and we cannot identify the stuff you have scanned.
+              </div>
+              <div class="text" i18n="@@guarantor-info-header">
+                <b>What can I do?</b></div>
+              <div class="text" i18n="@@guarantor-info-header">
+                Please try to scan the QR again and reopen the link. </div>
+              <div class="text" i18n="@@guarantor-info-header">
+                <b>2)</b> The owner has deleted this thing from his registered stuff list and doesn't look for it anymore.
+              </div>
+              <div class="text" i18n="@@guarantor-info-header"><b>What can I do?</b></div>
+              <div class="text" i18n="@@guarantor-info-header">Well you've done what you could. If you like the thing you have found you can keep it.</div>
             </div>
-            <button (click)="sendMessage()" type="button" class="btn shadow btn-primary button-width-lg button-save">
-              Send
-            </button>
-            <button (click)="cancel()" type="button"
-                    class="btn shadow btn-primary button-width-lg button-save button-cancel">
-              Cancel
-            </button>
           </div>
         </div>
       </main>

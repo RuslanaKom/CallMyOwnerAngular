@@ -14,11 +14,11 @@ export class StuffService {
     this.HOST = environment.HOST + '/stuff';
   }
 
-  fetchUserStuff(): Observable<StuffDto[]> {
+  fetchUserStuff(offset: number, size: number, sortDirection: string): Observable<StuffDto[]> {
     let params = new HttpParams();
-    params = params.append('offset', '0');
-    params = params.append('size', '10');
-    params = params.append('direction', 'DESC');
+    params = params.append('offset', String(offset));
+    params = params.append('size', String(size));
+    params = params.append('direction', sortDirection);
     return this.httpClient.get<StuffDto[]>(`${this.HOST}`, {params});
   }
 
@@ -49,5 +49,9 @@ export class StuffService {
     params = params.append('stuffId', id);
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     return this.httpClient.get(`${this.HOST}/id/defaultMessage`, {headers, responseType: 'text', params});
+  }
+
+  getStuffCount() {
+    return this.httpClient.get<number>(`${this.HOST}/count`);
   }
 }
