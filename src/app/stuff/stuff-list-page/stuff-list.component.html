@@ -3,21 +3,33 @@
   <div fxFlex>
     <div fxFlexFill fxLayout="row">
       <main class="container main" fxFlex fxFlexFill>
-        <button class="bold button-plus" (click)="createNewStuff()">+</button>
+        <div class="row">
+          <div class="col-md-1">
+            <button class=" bold button-plus" (click)="createNewStuff()">+</button>
+          </div>
+          <div class="col-md-2 offset-8">
+            <input i18n-placeholder=" @@stuff-input-findByNAme" placeholder="Stuff name"
+                   type="text clearfix" class="form-control mt-2 input-field"
+                   [(ngModel)]="stuffName" (ngModelChange)="onStuffNameEntered()">
+          </div>
+          <div class="col-md-1">
+            <svg-icon src="assets/img/search.svg"></svg-icon>
+          </div>
+        </div>
         <app-stuff-line-header (directionChanged)="onSortDirectionChanged($event)"></app-stuff-line-header>
         <div *ngFor="let stuffUnit of stuffList">
           <app-stuff-line (popupGenerated)="popupQr($event)" [stuffUnit]="stuffUnit"></app-stuff-line>
         </div>
         <app-spinner *ngIf="!stuffList"></app-spinner>
         <div class="row justify-content-center">
-        <mat-paginator #paginator
-                       [length]="length"
-                       [pageIndex]="pageIndex"
-                       [pageSize]="pageSize"
-                       [pageSizeOptions]="pageSizeOptions"
-                       (page)="pageEvent = onChangePage($event)"
-        >
-        </mat-paginator>
+          <mat-paginator #paginator
+                         [length]="length"
+                         [pageIndex]="pageIndex"
+                         [pageSize]="pageSize"
+                         [pageSizeOptions]="pageSizeOptions"
+                         (page)="pageEvent = onChangePage($event)"
+          >
+          </mat-paginator>
         </div>
       </main>
     </div>

@@ -10,16 +10,22 @@
         </div>
         <div class="row justify-content-center mr-lg-5 mr-md-5 mr-sm-1 mr-xs-0">
           <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+            <div *ngIf="stuffForm.invalid && stuffForm.touched" class="alert alert-danger">
+              <div i18n="@@signIn-validation-username-required">
+                <p>Please enter stuff name.</p>
+              </div>
+            </div>
             <form *ngIf="stuffUnit" [formGroup]="stuffForm">
               <div class="form-group ">
                 <label class="field-label" for="name" i18n="@@guarantor-info-other-loans">Item name</label>
                 <input type="text" class="form-control input-text" id="name"
-                  formControlName="stuffName" [(ngModel)]="stuffUnit.stuffName">
+                  formControlName="stuffName" [(ngModel)]="stuffUnit.stuffName" required>
                 <label class="field-label" for="message" i18n="@@guarantor-info-monthly-income">Contact form message text</label>
                 <input type="text" class="form-control input-text" id="message"
                   formControlName="defaultMessage" [(ngModel)]="stuffUnit.defaultMessage">
               </div>
-              <button (click)="saveInput()" type="button" class="btn shadow btn-primary button-width-lg button-save">
+              <button (click)="saveInput()" type="button" class="btn shadow btn-primary button-width-lg button-save"
+                      [ngClass]="[(stuffForm.touched && stuffForm.invalid) ? 'vf-btn-disabled' : 'btn-primary']" [disabled]="stuffForm.invalid">
                 Save
               </button>
               <button (click)="cancel()" type="button" class="btn shadow btn-primary button-width-lg button-save button-cancel">

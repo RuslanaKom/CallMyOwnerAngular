@@ -22,3 +22,33 @@
 .mat-form-field {
   margin-right: 12px;
 }
+
+.button-transparent {
+  background-color: transparent;
+  border-style: hidden;
+  outline: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+svg:hover {
+  fill: rebeccapurple;
+}
+
+svg{
+  width: 90%;
+  height: 90%;
+  fill: #017BD0;
+}
+
+.input-field {
+  margin-bottom: 1rem;
+  width: 15rem;
+}
+
+.name-header {
+  color: #017BD0;
+  font-size: 3rem;
+  line-height: 3rem;
+  font-family: PFBeauSansPro-Thin, sans-serif;
+}

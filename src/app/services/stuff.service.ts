@@ -14,11 +14,12 @@ export class StuffService {
     this.HOST = environment.HOST + '/stuff';
   }
 
-  fetchUserStuff(offset: number, size: number, sortDirection: string): Observable<StuffDto[]> {
+  fetchUserStuff(offset: number, size: number, sortDirection: string, stuffName: string): Observable<StuffDto[]> {
     let params = new HttpParams();
     params = params.append('offset', String(offset));
     params = params.append('size', String(size));
     params = params.append('direction', sortDirection);
+    params = params.append('stuffName', stuffName);
     return this.httpClient.get<StuffDto[]>(`${this.HOST}`, {params});
   }
 

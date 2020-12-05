@@ -12,16 +12,15 @@ import {MessagesComponent} from './messages/messages-component/messages.componen
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'onboard-application', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'auth/:token', component: TokenComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: '', component: HomePageComponent},
   {path: 'stuff', component: StuffListComponent},
-  {path: 'item/:id', component: StuffEditComponent},
+  {path: 'item', component: StuffEditComponent},
   {path: 'contact/:id', component: ContactComponent},
   {path: 'confirm/:id', component: ConfirmComponent},
-  {path: 'messages/:id', component: MessagesComponent},
+  {path: 'messages', component: MessagesComponent},
 ];
 
 @NgModule({

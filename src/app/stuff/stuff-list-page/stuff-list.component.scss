@@ -34,7 +34,7 @@
 }
 
 .button-plus {
-  margin-left: 30rem;
+  margin-left: 0rem;
   background-color: transparent;
   border-style: solid;
   border-color: #222222;
@@ -44,5 +44,16 @@
 }
 
 button:hover{
-  color: darkviolet;
+  color: rebeccapurple;
+}
+
+.input-field {
+  margin-bottom: 1rem;
+  width: 15rem;
+}
+
+svg{
+  width: 100%;
+  height: 100%;
+  fill: #017BD0;
 }

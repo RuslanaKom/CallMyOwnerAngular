@@ -1,11 +1,27 @@
-<div fxLayout="column" fxFlexFill>
+<div fxFlexFill>
   <app-navbar fxFlex [logoutDirectly]="true"></app-navbar>
   <div fxFlex>
     <div fxFlexFill fxLayout="row">
       <main class="container main" fxFlex fxFlexFill>
         <div class="row justify-content-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-            <app-message-line></app-message-line>
+            <div class="row">
+              <div class="col-md-1">
+                <button class="button-transparent" (click)="goBack()">
+                  <svg-icon src="assets/img/back.svg"></svg-icon>
+                </button>
+              </div>
+                <div class="col-md-1 offset-3 name-header bold" i18n="@@stuffName">{{stuffName}}</div>
+              <div class="col-md-2 offset-4">
+                <input i18n-placeholder=" @@message-input-findByText" placeholder="Message text"
+                       type="text clearfix" class="form-control mt-2 input-field"
+                       [(ngModel)]="messageText" (ngModelChange)="onMessageTextEntered()">
+              </div>
+              <div class="col-md-1">
+                <svg-icon src="assets/img/search.svg"></svg-icon>
+              </div>
+            </div>
+            <app-message-line-header (directionChanged)="onSortDirectionChanged($event)"></app-message-line-header>
             <div *ngFor="let message of messages">
               <app-message-line [message]="message"></app-message-line>
             </div>

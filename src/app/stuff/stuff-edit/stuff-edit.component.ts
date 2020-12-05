@@ -7,6 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpErrorResponse} from '@angular/common/http';
+import {RouteStuffEditService} from '../../services/route.stuffedit.service';
 
 @Component({
   selector: 'app-stuff-edit',
@@ -22,24 +23,26 @@ export class StuffEditComponent implements OnInit {
     private stuffService: StuffService,
     private router: Router,
     private modalService: NgbModal,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private routeStuffEditService: RouteStuffEditService) {
   }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== '0') {
-      this.stuffService.fetchStuffById(id).subscribe(response => {
-        if (response.id) {
-          this.stuffUnit = response;
-        } else {
-          this.prepareNewStuff();
-        }
+    this.routeStuffEditService.$stuffId.subscribe(stuffId => {
+      if (stuffId !== '0') {
+        this.stuffService.fetchStuffById(stuffId).subscribe(response => {
+          if (response.id) {
+            this.stuffUnit = response;
+          } else {
+            this.prepareNewStuff();
+          }
+          this.prepareForm();
+        });
+      } else {
+        this.prepareNewStuff();
         this.prepareForm();
-      });
-    } else {
-      this.prepareNewStuff();
-      this.prepareForm();
-    }
+      }
+    });
   }
 
   prepareNewStuff() {

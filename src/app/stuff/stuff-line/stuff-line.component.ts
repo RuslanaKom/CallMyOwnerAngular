@@ -5,6 +5,8 @@ import {StuffService} from '../../services/stuff.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MessageService} from '../../services/message.service';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
+import {RouteMessagesService} from '../../services/route.messages.service';
+import {RouteStuffEditService} from '../../services/route.stuffedit.service';
 
 @Component({
   selector: 'app-stuff-line',
@@ -25,7 +27,9 @@ export class StuffLineComponent implements OnInit {
     private stuffService: StuffService,
     private messageService: MessageService,
     private modalService: NgbModal,
-    private router: Router) {
+    private routeMessagesService: RouteMessagesService,
+    private router: Router,
+    private routeStuffEditService: RouteStuffEditService) {
   }
 
   ngOnInit() {
@@ -43,7 +47,8 @@ export class StuffLineComponent implements OnInit {
   }
 
   editStuff(id: string) {
-    this.router.navigate(['item', id]).then();
+    this.routeStuffEditService.$stuffId.next(id);
+    this.router.navigate(['item']);
   }
 
   removeItem() {
@@ -51,7 +56,9 @@ export class StuffLineComponent implements OnInit {
   }
 
   getMessages(id: string) {
-    this.router.navigate(['messages/' + id]);
+    this.routeMessagesService.$stuffId.next(id);
+    this.routeMessagesService.$stuffName.next(this.stuffUnit.stuffName);
+    this.router.navigate(['messages']);
   }
 
   private showConfirmationPopUp() {

@@ -10,11 +10,12 @@ import {CommonModule} from '@angular/common';
 import {MessageLineComponent} from './message-line/message-line.component';
 import {JwPaginationModule} from 'jw-angular-pagination';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MessageLineHeaderComponent} from './message-line-header/message-line-header.component';
 
 
 @NgModule({
   entryComponents: [],
-  declarations: [MessagesComponent, MessageLineComponent],
+  declarations: [MessagesComponent, MessageLineComponent, MessageLineHeaderComponent],
   imports: [
     NgbModule,
     HttpClientModule,
@@ -26,7 +27,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule
   ],
   providers: [CookieService, SvgIconRegistryService],
-  exports: [MessagesComponent, MessageLineComponent]
+  exports: [MessagesComponent, MessageLineComponent, MessageLineHeaderComponent]
 })
 
 export class MessagesModule { }

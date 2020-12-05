@@ -5,7 +5,7 @@ import {CommonModule} from '@angular/common';
 import {StuffLineComponent} from './stuff-line/stuff-line.component';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {StuffEditComponent} from './stuff-edit/stuff-edit.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortHeader, MatSortModule} from '@angular/material/sort';
 import {StuffLineHeaderComponent} from './stuff-line-header/stuff-line-header.component';
@@ -21,7 +21,8 @@ import {StuffLineHeaderComponent} from './stuff-line-header/stuff-line-header.co
     AngularSvgIconModule,
     ReactiveFormsModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FormsModule
   ],
   exports: [
     StuffListComponent,
