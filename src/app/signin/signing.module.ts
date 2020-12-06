@@ -7,16 +7,19 @@ import {FormsModule} from '@angular/forms';
 import {CommonFunctionalityModule} from '../common/common-functionality.module';
 import {TokenComponent} from './token-component/token.component';
 import {ConfirmComponent} from './confirm-component/confirm.component';
+import {ProfileComponent} from './profile-component/profile.component';
+import {AngularSvgIconModule} from 'angular-svg-icon';
 
 @NgModule({
   entryComponents: [],
-  declarations: [LoginComponent, RegistrationComponent, TokenComponent, ConfirmComponent],
+  declarations: [LoginComponent, RegistrationComponent, TokenComponent, ConfirmComponent, ProfileComponent],
   imports: [
     CommonModule,
     FormsModule,
-    CommonFunctionalityModule
+    CommonFunctionalityModule,
+    AngularSvgIconModule
   ],
   providers: [CookieService],
-  exports: [LoginComponent, RegistrationComponent, TokenComponent, ConfirmComponent]
+  exports: [LoginComponent, RegistrationComponent, TokenComponent, ConfirmComponent, ProfileComponent]
 })
 export class SigninModule { }

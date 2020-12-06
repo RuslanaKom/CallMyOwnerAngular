@@ -1,0 +1,63 @@
+<div fxLayout="column" fxFlexFill>
+  <app-navbar fxFlex [logoutDirectly]="true"></app-navbar>
+
+  <div fxFlex fxFlexFill>
+
+    <div fxLayout="row" fxFlex fxFlexFill>
+
+      <div fxFlex fxFlexFill fxLayout="column" fxLayoutAlign="space-between center">
+
+        <main class="container padding-top-3">
+
+          <div class="row justify-content-center">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-12">
+              <div i18n="@@signIn-title" class="header">
+                <p>User profile</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center pb-5">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-12">
+              <!--validation-->
+              <div class="row">
+                <div class="col-lg-8 col-md-10 col-sm-12 col-12">
+                  <div *ngIf="usernamew.touched && usernamew.invalid " class="alert alert-danger">
+                    <div i18n="@@signIn-validation-username-required">
+                      <p>Please enter username.</p>
+                    </div>
+                  </div>
+                  <div *ngIf="emailw.touched && emailw.invalid " class="alert alert-danger">
+                    <div i18n="@@signIn-validation-email-required">
+                      <p>Please enter valid email.</p>
+                    </div>
+                  </div>
+                  <!--input-->
+                  <span class="light-blue-text" i18n="@@signIn-input-usernameLabel">Username:</span>
+                  <input i18n-placeholder="@@signIn-input-usernamePlaceholder" placeholder="username"
+                         type="text clearfix" class="form-control mt-2 input-field" required
+                         autofocus [ngClass]="{'highlight': usernamew.touched  ? usernamew.invalid : false}"
+                         [(ngModel)]="userAccountDto.username" #usernamew="ngModel" [disabled]="submitted">
+
+                  <span class="light-blue-text" i18n="@@signIn-input-usernameLabel">Email:</span>
+                  <input i18n-placeholder="@@signIn-input-usernamePlaceholder" placeholder="email"
+                         type="email"  class="form-control mt-2 input-field" required email
+                         [ngClass]="{'highlight': emailw.touched  ? emailw.invalid : false}"
+                         [(ngModel)]="userAccountDto.defaultEmail" #emailw="ngModel" [disabled]="submitted">
+
+                  <button i18n="@@signIn-button" type="submit" class="btn btn-primary shadow mt-3"
+                          [ngClass]="[(usernamew.invalid || emailw.invalid )? 'vf-btn-disabled' : 'btn-primary']"
+                          style="min-width: 12rem;" (click)="updateProfile()"
+                          [disabled]="submitted ||  emailw.invalid || usernamew.invalid">Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
+
+

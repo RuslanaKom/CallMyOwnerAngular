@@ -5,6 +5,7 @@ import {ModalPopupComponent} from '../../../../modal-popup/modal-popup.component
 import {Router} from '@angular/router';
 import {PlatformLocation} from '@angular/common';
 import {User} from '../../../../models/generated';
+import {RouteMessagesService} from '../../../../services/route.messages.service';
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +24,8 @@ export class NavbarComponent implements OnInit {
   constructor(private location: PlatformLocation,
               private userService: UserService,
               private modalService: NgbModal,
-              private router: Router) {
+              private router: Router,
+              private routeMessagesService: RouteMessagesService) {
   }
 
   ngOnInit() {
@@ -71,5 +73,18 @@ export class NavbarComponent implements OnInit {
 
   goHome() {
     this.router.navigate(['/']);
+  }
+
+  toStuff() {
+    this.router.navigate(['stuff']);
+  }
+
+  toMessages() {
+    this.routeMessagesService.$stuffId.next('');
+    this.router.navigate(['messages']);
+  }
+
+  toUserProfile() {
+    this.router.navigate(['userProfile']);
   }
 }

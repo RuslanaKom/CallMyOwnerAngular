@@ -4,7 +4,7 @@ import {UserService} from '../../services/user.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 import {Router} from '@angular/router';
-import {AccessToken, UserLoginDto} from '../../models/generated';
+import {UserLoginDto} from '../../models/generated';
 import {environment} from '../../../environments/environment';
 
 @Component({

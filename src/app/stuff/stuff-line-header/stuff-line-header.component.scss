@@ -22,10 +22,11 @@
   padding: 0;
   margin: 0;
   height: 1.5rem;
+  margin-left: -2rem;
 }
 
 
-.asc{
+.asc {
   fill: #36c;
   transform: rotate(180deg);
 }
@@ -56,7 +57,7 @@ svg:hover {
   fill: rebeccapurple;
 }
 
-svg{
+svg {
   fill: blue;
   width: 1.5rem;
   height: 1.5rem;
@@ -70,6 +71,18 @@ svg{
   padding-left: 3rem;
 }
 
-button:hover{
+button:hover {
   color: darkviolet;
+}
+
+@media screen and (max-width: 600px) {
+  div.largescreen {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  div.smallscreen {
+    display: none;
+  }
 }

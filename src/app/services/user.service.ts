@@ -4,7 +4,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
 import * as jwt_decode from 'jwt-decode';
-import {AccessToken, User, UserAccountDto, UserLoginDto} from '../models/generated';
+import {AccessToken, User, UserAccountDto, UserAccountWithTokenDto, UserLoginDto} from '../models/generated';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -59,15 +59,14 @@ export class UserService {
 
   getUser(): User | undefined {
     if (this.getAuthorizationToken()) {
-
       const accessToken: string = this.getAuthorizationToken();
       if (accessToken) {
         const decoded = jwt_decode(accessToken);
-        // @ts-ignore
         return decoded.sub;
       }
     }
   }
+
   getLoginName(): string | undefined {
     const user = this.getUser();
     if (user) {
@@ -85,5 +84,13 @@ export class UserService {
 
   confirmEmail(id: string) {
     return this.httpClient.post<HttpResponse<any>>(`${this.HOST}/confirm`, id);
+  }
+
+  getUserProfile(): Observable<UserAccountDto>{
+    return this.httpClient.get<UserAccountDto>(`${this.HOST}`);
+  }
+
+  updateUserProfile(userAccountDto: UserAccountDto) {
+    return this.httpClient.post<UserAccountWithTokenDto>(`${this.HOST}/update`, userAccountDto);
   }
 }

@@ -49,11 +49,19 @@ button:hover{
 
 .input-field {
   margin-bottom: 1rem;
-  width: 15rem;
+  width: 18rem;
 }
 
 svg{
-  width: 100%;
-  height: 100%;
+  width: 5rem;
+  height: 5rem;
   fill: #017BD0;
+}
+
+.search{
+  padding-left: 4rem;
+  background-image: url('../../../assets/img/search.svg');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 5rem;
 }

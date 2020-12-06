@@ -54,8 +54,7 @@ $button-active-blue: #1669f2;
   width: 12rem;
   height: 2.6rem;
   background-color: $google-blue;
-  border-radius: 2px;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
   position: relative;
 
   .google-icon-wrapper {
@@ -133,13 +132,16 @@ $button-active-blue: #1669f2;
   color: #69707b;
   margin-top: 1em;
 }
-.man-image {
-  display: block;
-  width: 26rem;
-  height: 49rem;
-  background-size: 100%;
-  position: fixed;
-  top: 1rem;
-  left: 0rem;
-  background-image: url("/assets/img/backoffice/custom_login_415_banner.png");
+
+svg{
+  background-color: #277ac9;
+  height: 17%;
+  width: 17%;
+  margin: 0;
+  padding: 0;
+  margin-right: 1rem;
+}
+
+.small-text{
+  font-size: 0.9rem;
 }

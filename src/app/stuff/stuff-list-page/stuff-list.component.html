@@ -7,14 +7,16 @@
           <div class="col-md-1">
             <button class=" bold button-plus" (click)="createNewStuff()">+</button>
           </div>
-          <div class="col-md-2 offset-8">
-            <input i18n-placeholder=" @@stuff-input-findByNAme" placeholder="Stuff name"
+          <div class="col-md-2 offset-lg-7 offset-md-5 offset-sm-1">
+            <label class="search">
+            <input i18n-placeholder=" @@stuff-input-findByName" placeholder="Stuff name"
                    type="text clearfix" class="form-control mt-2 input-field"
                    [(ngModel)]="stuffName" (ngModelChange)="onStuffNameEntered()">
+            </label>
           </div>
-          <div class="col-md-1">
-            <svg-icon src="assets/img/search.svg"></svg-icon>
-          </div>
+<!--          <div class="col-md-1">-->
+<!--            <svg-icon src="assets/img/search.svg"></svg-icon>-->
+<!--          </div>-->
         </div>
         <app-stuff-line-header (directionChanged)="onSortDirectionChanged($event)"></app-stuff-line-header>
         <div *ngFor="let stuffUnit of stuffList">

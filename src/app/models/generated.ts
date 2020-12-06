@@ -14,6 +14,11 @@ export interface UserAccountDto {
   defaultEmail: string;
 }
 
+export interface UserAccountWithTokenDto {
+  userAccountDto: UserAccountDto;
+  accessToken: AccessToken;
+}
+
 export interface AccessToken {
   accessToken: string;
   tokenType: string;
@@ -28,6 +33,7 @@ export interface StuffDto {
 
 export interface Message {
   id: string;
+  stuffName: string;
   messageText: string;
   receivedDate: Date;
   new: boolean;
