@@ -31,7 +31,7 @@ export interface StuffDto {
   defaultMessage: string;
 }
 
-export interface Message {
+export interface MessageDto {
   id: string;
   stuffName: string;
   messageText: string;
@@ -49,4 +49,12 @@ export interface AdvDto {
   region: string;
   imageUrl: string[];
   date: Date;
+}
+
+export class PageableResult<T> {
+  content: T[];
+  totalElements: number;
+  totalPages: number;
+  page: number;
+  size: number;
 }

@@ -1,6 +1,6 @@
 import {Component, ErrorHandler, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Message, StuffDto} from '../../models/generated';
+import {MessageDto, StuffDto} from '../../models/generated';
 import {StuffService} from '../../services/stuff.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
@@ -12,5 +12,5 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class MessageLineComponent {
 
   @Input()
-  message: Message;
+  message: MessageDto;
 }

@@ -43,7 +43,10 @@ export class StuffLineComponent implements OnInit {
 
   generateQr(id: string) {
     console.log('qr generation');
-    this.stuffService.generateQr(id).subscribe(() => this.popupGenerated.emit(this.stuffUnit));
+    this.stuffService.generateQr(id).subscribe(() => {
+      this.popupGenerated.emit(this.stuffUnit);
+      window.open('http://127.0.0.1:8080/out.pdf', '_blank');
+    });
   }
 
   editStuff(id: string) {

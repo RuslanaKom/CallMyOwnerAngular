@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {StuffDto} from '../models/generated';
+import {PageableResult, StuffDto} from '../models/generated';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -14,13 +14,16 @@ export class StuffService {
     this.HOST = environment.HOST + '/stuff';
   }
 
-  fetchUserStuff(offset: number, size: number, sortDirection: string, stuffName: string): Observable<StuffDto[]> {
+  fetchUserStuff(offset: number, size: number, sortDirection: string, stuffName: string): Observable<PageableResult<StuffDto>> {
     let params = new HttpParams();
     params = params.append('offset', String(offset));
     params = params.append('size', String(size));
     params = params.append('direction', sortDirection);
     params = params.append('stuffName', stuffName);
-    return this.httpClient.get<StuffDto[]>(`${this.HOST}`, {params});
+    console.log('fetch user stuff');
+    const res =  this.httpClient.get<PageableResult<StuffDto>>(`${this.HOST}`, {params});
+    console.log(res);
+    return res;
   }
 
   generateQr(id: string): Observable<File> {
@@ -50,9 +53,5 @@ export class StuffService {
     params = params.append('stuffId', id);
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     return this.httpClient.get(`${this.HOST}/id/defaultMessage`, {headers, responseType: 'text', params});
-  }
-
-  getStuffCount() {
-    return this.httpClient.get<number>(`${this.HOST}/count`);
   }
 }

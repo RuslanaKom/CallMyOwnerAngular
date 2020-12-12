@@ -6,12 +6,14 @@
 
           <div class="row-style with-border">
             <div class="col-md-1 offset-sm-0 name-header bold" i18n="@@stuff">Stuff</div>
+            <div class="col-md-1 offset-sm-0 name-header bold" i18n="@@stuff">
             <button class="button-transparent" (click)="changeSortDirection()">
               <svg-icon
                 [svgClass]="isDefault ? 'asc':'desc'"
                 src="assets/img/down-arrow.svg"></svg-icon>
             </button>
-              <div class="col-md-3 col-sm-1 offset-sm-0 offset-md-1 name-header bold" i18n="@@message">Owner's message</div>
+              </div>
+              <div class="col-md-3 col-sm-0 offset-sm-0 offset-md-0 name-header bold" i18n="@@message">Owner's message</div>
               <div class="col-md-1 offset-sm-0 offset-md-1 name-header bold" i18n="@@generate-qr">Messages</div>
               <div class="col-md-1 offset-sm-0 offset-md-1 name-header bold" i18n="@@generate-qr">Generate QR</div>
               <div class="col-md-1 offset-sm-0 offset-md-1 name-header bold" i18n="@@generate-qr">Remove item</div>

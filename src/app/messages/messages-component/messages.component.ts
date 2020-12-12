@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
 import {MessageService} from '../../services/message.service';
-import {Message} from '../../models/generated';
+import {MessageDto} from '../../models/generated';
 import {PageEvent} from '@angular/material/paginator';
 import {RouteMessagesService} from '../../services/route.messages.service';
 
@@ -11,7 +11,7 @@ import {RouteMessagesService} from '../../services/route.messages.service';
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit, OnDestroy {
-  messages: Message[] = [];
+  messages: MessageDto[];
   private stuffId: string;
   stuffName: string;
   pageEvent: PageEvent;
@@ -36,15 +36,11 @@ export class MessagesComponent implements OnInit, OnDestroy {
       this.messageService.getMessages(this.stuffId, this.pageIndex, this.pageSize, this.sortDirection, this.messageText)
         .subscribe(response => {
             if (response) {
-              this.messages = response;
+              this.messages = response.content;
+              this.length = response.totalElements;
             }
           }
         );
-      this.messageService.getMessagesCount(this.stuffId).subscribe(response => {
-        if (response) {
-          this.length = response;
-        }
-      });
     });
   }
 
@@ -75,7 +71,8 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.messageService.getMessages(this.stuffId, $event.pageIndex, $event.pageSize, this.sortDirection, this.messageText)
       .subscribe(response => {
           if (response) {
-            this.messages = response;
+            this.messages = response.content;
+            this.length = response.totalElements;
             this.pageIndex = $event.pageIndex;
             this.pageSize = $event.pageSize;
           }
@@ -88,7 +85,8 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.messageService.getMessages(this.stuffId, this.pageIndex, this.pageSize, this.sortDirection, this.messageText)
       .subscribe(response => {
           if (response) {
-            this.messages = response;
+            this.messages = response.content;
+            this.length = response.totalElements;
           }
         }
       );
@@ -102,7 +100,8 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.messageService.getMessages(this.stuffId, this.pageIndex, this.pageSize, this.sortDirection, this.messageText)
       .subscribe(response => {
           if (response) {
-            this.messages = response;
+            this.messages = response.content;
+            this.length = response.totalElements;
           }
         }
       );

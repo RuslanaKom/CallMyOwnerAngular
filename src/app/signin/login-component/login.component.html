@@ -20,7 +20,6 @@
           <div class="row justify-content-center pb-5">
             <div class="col-lg-9 col-md-12 col-sm-12 col-12">
               <!--validation-->
-
               <div class="col-lg-8 col-md-10 col-sm-12 col-12">
                 <div *ngIf="usernamew.touched && usernamew.invalid" class="alert alert-danger">
                   <div i18n="@@signIn-validation-username-required">
@@ -33,18 +32,20 @@
                   </div>
                 </div>
                 <!--input-->
+                <div class="row">
                 <span class="light-blue-text" i18n="@@signIn-input-usernameLabel">Username:</span>
                 <input i18n-placeholder="@@signIn-input-usernamePlaceholder" placeholder="username"
                        type="text clearfix" class="form-control mt-2 input-field" required
                        [ngClass]="{'highlight': usernamew.touched  ? usernamew.invalid : false}"
                        [(ngModel)]="userLoginDto.username" #usernamew="ngModel" [disabled]="submitted">
-
+                </div>
+                <div class="row">
                 <span class="light-blue-text" i18n="@@signIn-input-passwordLabel">Password:</span>
                 <input i18n-placeholder="@@signIn-input-passwordPlaceholder" placeholder="password"
                        type="password" class="form-control mt-2 input-field" required
                        [ngClass]="{'highlight': passwordw.touched  ? passwordw.invalid: false}"
                        [(ngModel)]="userLoginDto.password" #passwordw="ngModel" [disabled]="submitted">
-
+                </div>
                 <div class="row">
                   <div class="row-cols-1">
                     <button i18n="@@signIn-button" type="submit" class="btn btn-primary shadow mt-3"
@@ -53,7 +54,7 @@
                             [disabled]="submitted || usernamew.invalid || passwordw.invalid">Login
                     </button>
                   </div>
-                  <div class="row-cols-1 offset-2">
+                  <div class="row-cols-1 offset-lg-3 offset-md-1 offset-sm-0">
                     <button i18n="@@signIn-button" type="submit" class="btn btn-primary shadow mt-3 small-text" style="max-width: 12rem;"
                             (click)="signInWithGoogle()">
                       <svg-icon src="assets/img/google.svg"></svg-icon>

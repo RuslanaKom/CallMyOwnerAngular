@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {Message} from '../models/generated';
+import {MessageDto, PageableResult} from '../models/generated';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -14,20 +14,14 @@ export class MessageService {
     this.HOST = environment.HOST + '/message';
   }
 
-  getMessages(id: string, offset: number, size: number, sortDirection: string, messageText: string): Observable<Message[]> {
+  getMessages(id: string, offset: number, size: number, sortDirection: string, messageText: string): Observable<PageableResult<MessageDto>> {
     let params = new HttpParams();
     params = params.append('stuffId', id);
     params = params.append('offset', String(offset));
     params = params.append('size', String(size));
     params = params.append('direction', sortDirection);
     params = params.append('messageText', messageText);
-    return this.httpClient.get<Message[]>(`${this.HOST}`, {params});
-  }
-
-  getMessagesCount(stuffId: string) {
-    let params = new HttpParams();
-    params = params.append('stuffId', stuffId);
-    return this.httpClient.get<number>(`${this.HOST}` + '/count', {params});
+    return this.httpClient.get<PageableResult<MessageDto>>(`${this.HOST}`, {params});
   }
 
   updateMessages(ids: string []) {

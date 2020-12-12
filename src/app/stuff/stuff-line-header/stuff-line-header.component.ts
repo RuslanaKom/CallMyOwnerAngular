@@ -1,11 +1,4 @@
-import {Component, ErrorHandler, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {StuffDto} from '../../models/generated';
-import {StuffService} from '../../services/stuff.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {MessageService} from '../../services/message.service';
-import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
-import {MatSortable} from '@angular/material/sort';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-stuff-line-header',
@@ -26,6 +19,7 @@ export class StuffLineHeaderComponent {
       this.isDefault = true;
     }
     this.directionChanged.emit(this.isDefault === true ? 'ASC' : 'DESC');
+    console.log(this.isDefault);
   }
 
 }

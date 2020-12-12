@@ -14,9 +14,6 @@
                    [(ngModel)]="stuffName" (ngModelChange)="onStuffNameEntered()">
             </label>
           </div>
-<!--          <div class="col-md-1">-->
-<!--            <svg-icon src="assets/img/search.svg"></svg-icon>-->
-<!--          </div>-->
         </div>
         <app-stuff-line-header (directionChanged)="onSortDirectionChanged($event)"></app-stuff-line-header>
         <div *ngFor="let stuffUnit of stuffList">
@@ -29,8 +26,7 @@
                          [pageIndex]="pageIndex"
                          [pageSize]="pageSize"
                          [pageSizeOptions]="pageSizeOptions"
-                         (page)="pageEvent = onChangePage($event)"
-          >
+                         (page)="pageEvent = onChangePage($event)">
           </mat-paginator>
         </div>
       </main>
