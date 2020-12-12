@@ -21,7 +21,7 @@ export class StuffService {
     params = params.append('direction', sortDirection);
     params = params.append('stuffName', stuffName);
     console.log('fetch user stuff');
-    const res =  this.httpClient.get<PageableResult<StuffDto>>(`${this.HOST}`, {params});
+    const res = this.httpClient.get<PageableResult<StuffDto>>(`${this.HOST}`, {params});
     console.log(res);
     return res;
   }
@@ -30,6 +30,13 @@ export class StuffService {
     let params = new HttpParams();
     params = params.append('stuffId', id);
     return this.httpClient.get<File>(`${this.HOST}/qr`, {params});
+  }
+
+  fetchQRPdf(id: string) {
+    let params = new HttpParams();
+    params = params.append('stuffId', id);
+    return this.httpClient.get(`${this.HOST}/qr`, {responseType: 'blob' as 'json', params}
+    );
   }
 
   saveUpdateStuff(stuffUnit: StuffDto): Observable<StuffDto> {

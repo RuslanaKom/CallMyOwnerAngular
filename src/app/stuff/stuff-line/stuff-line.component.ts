@@ -41,12 +41,24 @@ export class StuffLineComponent implements OnInit {
     }
   }
 
+  // generateQr(id: string) {
+  //   console.log('qr generation');
+  //   this.stuffService.generateQr(id).subscribe(() => {
+  //     this.popupGenerated.emit(this.stuffUnit);
+  //     window.open('http://127.0.0.1:8080/out.pdf', '_blank');
+  //   });
+  // }
+
   generateQr(id: string) {
-    console.log('qr generation');
-    this.stuffService.generateQr(id).subscribe(() => {
-      this.popupGenerated.emit(this.stuffUnit);
-      window.open('http://127.0.0.1:8080/out.pdf', '_blank');
+    this.stuffService.fetchQRPdf(id).subscribe((res: Blob) => {
+      this.onFormatPdf(res);
     });
+  }
+
+  onFormatPdf(res: Blob) {
+    const blob = new Blob([res], { type: res.type });
+    const url = window.URL.createObjectURL(blob);
+    window.open(url);
   }
 
   editStuff(id: string) {
