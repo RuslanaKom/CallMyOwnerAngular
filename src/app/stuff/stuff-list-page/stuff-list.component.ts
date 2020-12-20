@@ -55,7 +55,8 @@ export class StuffListComponent implements OnInit {
   }
 
   onChangePage($event: PageEvent) {
-    this.stuffService.fetchUserStuff($event.pageIndex, $event.pageSize, this.sortDirection, this.stuffName).subscribe(response => {
+    this.stuffService.fetchUserStuff($event.pageIndex, $event.pageSize, this.sortDirection, this.stuffName)
+      .subscribe(response => {
         if (response) {
           this.stuffList = response.content;
           this.pageIndex = $event.pageIndex;
@@ -69,8 +70,8 @@ export class StuffListComponent implements OnInit {
 
   onSortDirectionChanged($event: string) {
     this.sortDirection = $event;
-    this.stuffService.fetchUserStuff(this.pageIndex, this.pageSize, this.sortDirection, this.stuffName).subscribe(response => {
-        console.log('resp ' + response.content);
+    this.stuffService.fetchUserStuff(this.pageIndex, this.pageSize, this.sortDirection, this.stuffName)
+      .subscribe(response => {
         this.stuffList = response.content;
         this.length = response.totalElements;
       }
@@ -78,8 +79,8 @@ export class StuffListComponent implements OnInit {
   }
 
   onStuffNameEntered() {
-    this.stuffService.fetchUserStuff(this.pageIndex, this.pageSize, this.sortDirection, this.stuffName).subscribe(response => {
-        console.log('resp ' + response.content);
+    this.stuffService.fetchUserStuff(this.pageIndex, this.pageSize, this.sortDirection, this.stuffName)
+      .subscribe(response => {
         this.stuffList = response.content;
         this.length = response.totalElements;
       }

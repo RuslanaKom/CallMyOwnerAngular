@@ -28,7 +28,6 @@
   margin: 0;
 }
 
-
 .read {
   fill: #36c
 }
@@ -75,3 +74,16 @@ svg{
 button:hover{
   color: darkviolet;
 }
+
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10pt;
+  margin-bottom: -20pt;
+  margin-left: -40pt;
+}
+
+.radio-button {
+  margin-right: 4pt;
+}
+

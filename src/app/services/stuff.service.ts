@@ -32,9 +32,10 @@ export class StuffService {
     return this.httpClient.get<File>(`${this.HOST}/qr`, {params});
   }
 
-  fetchQRPdf(id: string) {
+  fetchQRPdf(id: string, size: string) {
     let params = new HttpParams();
     params = params.append('stuffId', id);
+    params = params.append('size', size);
     return this.httpClient.get(`${this.HOST}/qr`, {responseType: 'blob' as 'json', params}
     );
   }

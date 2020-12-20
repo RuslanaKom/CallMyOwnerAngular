@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortHeader, MatSortModule} from '@angular/material/sort';
 import {StuffLineHeaderComponent} from './stuff-line-header/stuff-line-header.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   entryComponents: [],
@@ -22,7 +23,8 @@ import {StuffLineHeaderComponent} from './stuff-line-header/stuff-line-header.co
     ReactiveFormsModule,
     MatPaginatorModule,
     MatSortModule,
-    FormsModule
+    FormsModule,
+    MatRadioModule
   ],
   exports: [
     StuffListComponent,

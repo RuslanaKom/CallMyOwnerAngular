@@ -32,7 +32,6 @@ export class LoginComponent {
     this.userService.clearAuthCookie();
     this.userService.login(this.userLoginDto).subscribe(
       (response) => {
-        console.log(response);
         this.userService.setToken(response);
         this.router.navigate(['stuff']);
       },

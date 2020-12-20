@@ -22,6 +22,8 @@ export class StuffLineComponent implements OnInit {
   popupGenerated: EventEmitter<StuffDto> = new EventEmitter<StuffDto>();
 
   hasNewMessages: boolean;
+  qrSize = 'S';
+  sizes: string[] = ['S', 'M', 'L'];
 
   constructor(
     private stuffService: StuffService,
@@ -41,16 +43,9 @@ export class StuffLineComponent implements OnInit {
     }
   }
 
-  // generateQr(id: string) {
-  //   console.log('qr generation');
-  //   this.stuffService.generateQr(id).subscribe(() => {
-  //     this.popupGenerated.emit(this.stuffUnit);
-  //     window.open('http://127.0.0.1:8080/out.pdf', '_blank');
-  //   });
-  // }
-
   generateQr(id: string) {
-    this.stuffService.fetchQRPdf(id).subscribe((res: Blob) => {
+    console.log(this.qrSize);
+    this.stuffService.fetchQRPdf(id, this.qrSize).subscribe((res: Blob) => {
       this.onFormatPdf(res);
     });
   }
@@ -70,12 +65,6 @@ export class StuffLineComponent implements OnInit {
     this.showConfirmationPopUp();
   }
 
-  getMessages(id: string) {
-    this.routeMessagesService.$stuffId.next(id);
-    this.routeMessagesService.$stuffName.next(this.stuffUnit.stuffName);
-    this.router.navigate(['messages']);
-  }
-
   private showConfirmationPopUp() {
     const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
     modalRef.componentInstance.spinner = false;
@@ -92,5 +81,11 @@ export class StuffLineComponent implements OnInit {
         });
       }
     });
+  }
+
+  getMessages(id: string) {
+    this.routeMessagesService.$stuffId.next(id);
+    this.routeMessagesService.$stuffName.next(this.stuffUnit.stuffName);
+    this.router.navigate(['messages']);
   }
 }

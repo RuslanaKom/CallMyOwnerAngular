@@ -5,6 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 import {Router} from '@angular/router';
 import {UserAccountDto} from '../../models/generated';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-registration',
@@ -35,7 +36,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   validateInput() {
-    console.log('validate11');
     this.validate = true;
     this.passwordWeak = false;
     this.passwordsNotMatch = false;
@@ -44,18 +44,14 @@ export class RegistrationComponent implements OnInit {
       return false;
     }
     if (this.isPasswordWeak()) {
-      console.log('validate');
       this.passwordWeak = true;
-      console.log(this.passwordWeak);
       return false;
     }
     return true;
   }
 
   register() {
-    console.log('1')
     if (!this.validateInput()) {
-      console.log('from register')
       return;
     }
     this.submitted = true;
@@ -68,27 +64,25 @@ export class RegistrationComponent implements OnInit {
       error => {
         console.error('Error occurred during registration', error);
         this.submitted = false;
-        this.showErrorPopUp();
+        this.showErrorPopUp(error);
       },
       () => {
         this.submitted = false;
       });
   }
 
-  private showErrorPopUp() {
+  private showErrorPopUp(error: HttpErrorResponse) {
     const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
     modalRef.componentInstance.spinner = false;
-    modalRef.componentInstance.title = 'Sign up error';
-    modalRef.componentInstance.content = 'A problem with the identification occurred. ' +
-      'There may be several reasons why it happened. ' +
-      'Please try again or contact our support for more information.';
+    modalRef.componentInstance.title = 'Cannot complete registration';
+    modalRef.componentInstance.content = error.error;
   }
 
   private showConfirmationPopUp() {
     const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
     modalRef.componentInstance.spinner = false;
     modalRef.componentInstance.title = 'Confirm your registration';
-    modalRef.componentInstance.content = 'Confirmation email has been sent to' + this.userAccountDto.defaultEmail + '. Please check your inbox and confirm you registration.';
+    modalRef.componentInstance.content = 'Confirmation email has been sent to ' + this.userAccountDto.defaultEmail + '. Please check your inbox and confirm you registration.';
   }
 
   private passwordMatches() {
@@ -96,6 +90,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   private isPasswordWeak() {
-    return !this.userAccountDto.password.match('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,30}');
+    return !this.userAccountDto.password.match(
+      '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,30}');
   }
 }

@@ -20,6 +20,14 @@
               <button class="button-transparent"(click)="generateQr(stuffUnit.id)">
                 <svg-icon src="assets/img/qr.svg"></svg-icon>
               </button>
+              <mat-radio-group
+                class="radio-group"
+                [(ngModel)]="qrSize">
+                <mat-radio-button class="radio-button" *ngFor="let size of sizes" [value]="size">
+                  {{size}}
+                </mat-radio-button>
+              </mat-radio-group>
+
             </div>
             <div class="col-md-1 offset-sm-0 offset-md-1 qr">
               <button class="button-transparent"(click)="removeItem()">
