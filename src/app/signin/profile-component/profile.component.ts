@@ -5,6 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalPopupComponent} from '../../modal-popup/modal-popup.component';
 import {Router} from '@angular/router';
 import {UserAccountDto} from '../../models/generated';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -49,20 +50,18 @@ export class ProfileComponent implements OnInit {
       error => {
         console.error('Error occurred during profile update', error);
         this.submitted = false;
-        this.showErrorPopUp();
+        this.showErrorPopUp(error);
       },
       () => {
         this.submitted = false;
       });
   }
 
-  private showErrorPopUp() {
+  private showErrorPopUp(error: HttpErrorResponse)  {
     const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
     modalRef.componentInstance.spinner = false;
-    modalRef.componentInstance.title = 'Sign up error';
-    modalRef.componentInstance.content = 'A problem with the identification occurred. ' +
-      'There may be several reasons why it happened. ' +
-      'Please try again or contact our support for more information.';
+    modalRef.componentInstance.title = 'Profile edit error';
+    modalRef.componentInstance.content = error.error;
   }
 
   private showConfirmationPopUp() {
@@ -75,7 +74,7 @@ export class ProfileComponent implements OnInit {
   private showOkPopUp() {
     const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
     modalRef.componentInstance.spinner = false;
-    modalRef.componentInstance.title = 'Your profile data updated sucessfully.';
+    modalRef.componentInstance.title = 'Your profile data updated successfully.';
   }
 
 }
