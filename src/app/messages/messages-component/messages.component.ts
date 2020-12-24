@@ -33,7 +33,8 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.routeMessagesService.$stuffName.subscribe(name => this.stuffName = name);
     this.routeMessagesService.$stuffId.subscribe(id => {
       this.stuffId = id;
-      this.messageService.getMessages(this.stuffId, this.pageIndex, this.pageSize, this.sortDirection, this.messageText)
+      this.messageService.getMessages(this.stuffId, this.pageIndex, this.pageSize,
+        this.sortDirection, this.messageText)
         .subscribe(response => {
             if (response) {
               this.messages = response.content;
@@ -44,15 +45,15 @@ export class MessagesComponent implements OnInit, OnDestroy {
     });
   }
 
-  getNewMessagesIds(): string[] {
-    return this.messages.filter(m => m.new).map(m => m.id);
-  }
-
   ngOnDestroy(): void {
     const newMessagesIds = this.getNewMessagesIds();
     if (this.getNewMessagesIds().length) {
       this.messageService.updateMessages(newMessagesIds).subscribe();
     }
+  }
+
+  getNewMessagesIds(): string[] {
+    return this.messages.filter(m => m.new).map(m => m.id);
   }
 
   onChangePage($event: PageEvent) {

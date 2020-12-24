@@ -45,10 +45,13 @@
                          [ngClass]="{'highlight': emailw.touched  ? emailw.invalid : false}"
                          [(ngModel)]="userAccountDto.defaultEmail" #emailw="ngModel" [disabled]="submitted">
 
-                  <button i18n="@@signIn-button" type="submit" class="btn btn-primary shadow mt-3"
+                  <button i18n="@@signIn-button" type="submit" class="btn btn-primary shadow"
                           [ngClass]="[(usernamew.invalid || emailw.invalid )? 'vf-btn-disabled' : 'btn-primary']"
                           style="min-width: 12rem;" (click)="updateProfile()"
                           [disabled]="submitted ||  emailw.invalid || usernamew.invalid">Save
+                  </button>
+                  <button (click)="cancel()" type="button" class="btn shadow btn-primary button-save">
+                    Cancel
                   </button>
                 </div>
               </div>

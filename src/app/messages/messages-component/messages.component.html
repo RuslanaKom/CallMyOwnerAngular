@@ -11,33 +11,32 @@
                   <svg-icon src="assets/img/back.svg"></svg-icon>
                 </button>
               </div>
-                <div class="col-md-1 offset-3 name-header bold" i18n="@@stuffName">{{stuffName}}</div>
+              <div class="col-md-1 offset-3 name-header bold" i18n="@@stuffName">{{stuffName}}</div>
               <div class="col-md-2 offset-4">
-                <input i18n-placeholder=" @@message-input-findByText" placeholder="Message text"
-                       type="text clearfix" class="form-control mt-2 input-field"
-                       [(ngModel)]="messageText" (ngModelChange)="onMessageTextEntered()">
-              </div>
-              <div class="col-md-1">
-                <svg-icon src="assets/img/search.svg"></svg-icon>
-              </div>
+                <label class="search">
+                  <input i18n-placeholder=" @@message-input-findByText" placeholder="Message text"
+                         type="text clearfix" class="form-control mt-2 input-field"
+                         [(ngModel)]="messageText" (ngModelChange)="onMessageTextEntered()">
+                </label>
             </div>
-            <app-message-line-header (directionChanged)="onSortDirectionChanged($event)"></app-message-line-header>
-            <div *ngFor="let message of messages">
-              <app-message-line [message]="message"></app-message-line>
-            </div>
-            <app-spinner *ngIf="!messages"></app-spinner>
           </div>
-          <mat-paginator #paginator
-                         [length]="length"
-                         [pageIndex]="pageIndex"
-                         [pageSize]="pageSize"
-                         [pageSizeOptions]="pageSizeOptions"
-                         (page)="pageEvent = onChangePage($event)"
-          >
-          </mat-paginator>
+          <app-message-line-header (directionChanged)="onSortDirectionChanged($event)"></app-message-line-header>
+          <div *ngFor="let message of messages">
+            <app-message-line [message]="message"></app-message-line>
+          </div>
+          <app-spinner *ngIf="!messages"></app-spinner>
         </div>
-      </main>
+        <mat-paginator #paginator
+                       [length]="length"
+                       [pageIndex]="pageIndex"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="pageSizeOptions"
+                       (page)="pageEvent = onChangePage($event)"
+        >
+        </mat-paginator>
     </div>
+    </main>
   </div>
+</div>
 </div>
 

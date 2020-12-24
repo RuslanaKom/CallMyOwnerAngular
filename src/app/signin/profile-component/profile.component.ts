@@ -68,7 +68,7 @@ export class ProfileComponent implements OnInit {
     const modalRef = this.modalService.open(ModalPopupComponent, {windowClass: 'cancel-confirm-modal'});
     modalRef.componentInstance.spinner = false;
     modalRef.componentInstance.title = 'Confirm your email changed.';
-    modalRef.componentInstance.content = 'Confirmation email has been sent to' + this.userAccountDto.defaultEmail + '. Please check your inbox and confirm you registration.';
+    modalRef.componentInstance.content = 'Confirmation email has been sent to ' + this.userAccountDto.defaultEmail + '. Please check your inbox and confirm you registration.';
   }
 
   private showOkPopUp() {
@@ -77,4 +77,7 @@ export class ProfileComponent implements OnInit {
     modalRef.componentInstance.title = 'Your profile data updated successfully.';
   }
 
+  cancel() {
+    this.router.navigate(['stuff']);
+  }
 }
