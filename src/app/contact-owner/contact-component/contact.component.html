@@ -1,32 +1,19 @@
-<div fxLayout="column" fxFlexFill>
-  <app-navbar fxFlex [logoutDirectly]="false"></app-navbar>
-  <div fxFlex>
-    <div fxFlexFill fxLayout="row">
+  <app-navbar [logoutDirectly]="false"></app-navbar>
       <main class="container main" fxFlex fxFlexFill>
         <div *ngIf="id">
           <div class="row justify-content-center">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="col-lg-12 col-md-8 col-sm-6">
               <div id="userMessage" *ngIf="ownersDefaultMessage">
                 <div class="header center" i18n="@@guarantor-info-header">Stuff owner says:</div>
                 <div class="sub-header center" i18n="@@guarantor-info-header">{{ownersDefaultMessage}}</div>
               </div>
               <div class="header center" i18n="@@guarantor-info-header">Send your message to stuff owner:</div>
-              <div class="sub-header center" i18n="@@guarantor-info-header">* Don't forget to include your contact
-                information,<br>
-                if you want the owner to get in touch with you.
-              </div>
             </div>
           </div>
-          <div class="row justify-content-center mr-lg-5 mr-md-5 mr-sm-1 mr-xs-0">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-<!--              <div *ngIf="messagetext.touched && messagetext.invalid" class="alert alert-danger">-->
-<!--                <div i18n="@@signIn-validation-username-required">-->
-<!--                  <p>Please enter message text.</p>-->
-<!--                </div>-->
-<!--              </div>-->
-              <div>
+          <div class="row">
+            <div class="col-lg-6 col-sm-12">
                 <textarea [(ngModel)]="message" #messagetext="ngModel" class="text-message" required="true"></textarea>
-              </div>
+              <div class="row">
               <button (click)="sendMessage()" type="button" class="btn shadow btn-primary button-width-lg button-save"
                       [ngClass]="[(messagetext.touched && messagetext.invalid) ? 'vf-btn-disabled' : 'btn-primary']" [disabled]="messagetext.invalid">
                 Send
@@ -35,9 +22,10 @@
                       class="btn shadow btn-primary button-width-lg button-save button-cancel">
                 Cancel
               </button>
+              </div>
+            </div>
             </div>
           </div>
-        </div>
         <div *ngIf="notFound">
           <div class="row justify-content-center">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -61,6 +49,3 @@
           </div>
         </div>
       </main>
-    </div>
-  </div>
-</div>

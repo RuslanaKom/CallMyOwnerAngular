@@ -1,6 +1,6 @@
 .to-right {
-  margin-right: 2%;
   margin-left: auto;
+  text-align: right;
 }
 
 .button-transparent {
@@ -35,10 +35,21 @@ close-button-mobile {
 }
 
 .logo{
-  font-size: 1.7rem;
+  font-size: 20pt;
   font-stretch: expanded;
+  margin-left: 0;
+  padding:0;
 }
 
 span:hover{
   text-decoration: underline;
+}
+
+.abc{
+  margin-left: 15pt;
+}
+
+.borderewe{
+  border-color: red;
+  border-style: solid;
 }

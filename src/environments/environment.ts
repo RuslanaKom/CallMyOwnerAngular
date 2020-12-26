@@ -6,7 +6,7 @@ export const environment = {
   production: false,
    HOST: 'http://localhost:9999/loststuff',
   // todo get backend conteiner IP and set here
- // HOST: 'http://172.17.0.1',
+  //HOST: 'http://stufflost.site/loststuff',
 
 };
 

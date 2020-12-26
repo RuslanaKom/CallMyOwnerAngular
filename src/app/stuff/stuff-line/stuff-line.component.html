@@ -10,13 +10,13 @@
                 {{stuffUnit.stuffName}}
               </button>
             </div>
-            <div class="col-md-3 col-sm-1 offset-sm-0 offset-md-1 sub-header">{{stuffUnit.defaultMessage}}</div>
+            <div class="d-none d-sm-block col-md-3 col-sm-1 offset-sm-0 offset-md-1 sub-header">{{stuffUnit.defaultMessage}}</div>
             <div class="col-md-1 offset-1 qr">
               <button class="button-transparent" (click)="getMessages(stuffUnit.id)">
-                <svg-icon [svgClass]="hasNewMessages? 'unread':'read'"  src="assets/img/message.svg"></svg-icon>
+                <svg-icon [svgClass]="hasNewMessages? 'unread':'read'" src="assets/img/message.svg"></svg-icon>
               </button>
             </div>
-            <div class="col-md-1 offset-sm-0 offset-md-1 qr">
+            <div class="col-md-1 offset-sm-1 offset-md-1 qr">
               <button class="button-transparent"(click)="generateQr(stuffUnit.id)">
                 <svg-icon src="assets/img/qr.svg"></svg-icon>
               </button>
@@ -28,7 +28,7 @@
                 </mat-radio-button>
               </mat-radio-group>
             </div>
-            <div class="col-md-1 offset-sm-0 offset-md-1 qr">
+            <div class="col-md-1 offset-sm-1 offset-md-1 qr">
               <button class="button-transparent"(click)="removeItem()">
                 <svg-icon src="assets/img/trash.svg"></svg-icon>
               </button>

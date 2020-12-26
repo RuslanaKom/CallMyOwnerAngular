@@ -1,21 +1,48 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light" xmlns="http://www.w3.org/1999/html">
-  <span class="d-none d-sm-block navbar-brand">
-    <button class="button-transparent mx-2 px-0 logo"
-            (click)="goHome()"> Lost Stuff </button></span>
-
-  <form class="form-inline my-2 my-lg-0" *ngIf="user">
-    <button type="button" class="btn btn-link my-2 my-sm-0 ml-5 no-margin no-padding" aria-label="Close">
+<nav class="navbar navbar-expand-sm d-sm-flex navbar-light bg-light" xmlns="http://www.w3.org/1999/html">
+    <button class="button-transparent logo"
+            (click)="goHome()"> Lost Stuff </button>
+<div class="d-none d-sm-block">
+    <button *ngIf="user" type="button" class="btn btn-link abc" aria-label="Close">
       <span aria-hidden="true" (click)="toStuff()" class="close-button">Stuff</span>
     </button>
-  </form>
-  <form class="form-inline my-2 my-lg-0" *ngIf="user">
-    <button type="button" class="btn btn-link my-2 my-sm-0 ml-5 no-margin no-padding" aria-label="Close">
+
+    <button *ngIf="user" type="button" class="btn btn-link abc " aria-label="Close">
       <span aria-hidden="true" (click)="toMessages()" class="close-button">Messages</span>
     </button>
-  </form>
+</div>
 
-  <div class=" d-sm-block collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="navbar-text to-right" *ngIf="languages.length > 1">
+  <div  class="d-none d-sm-block to-right">
+  <button *ngIf="user" type="button" class="btn btn-link" aria-label="Close">
+      <span aria-hidden="true" (click)="toUserProfile()" class="close-button">
+        <svg-icon src="assets/img/user.svg" [svgStyle]="{'width.rem':'10pt','fill':'#ffffff'}"></svg-icon>
+        <span class="ml-1">{{user}}</span></span>
+  </button>
+  <button  *ngIf="user" type="button" class="btn btn-link " aria-label="Close">
+    <span aria-hidden="true" (click)="confirmLogout()" class="close-button">Logout</span>
+  </button>
+  <button *ngIf="!user" type="button" class="btn btn-link" aria-label="Close">
+    <span aria-hidden="true" (click)="login()" class="close-button">Login</span>
+  </button>
+  </div>
+
+  <div  class="d-sm-none to-right">
+    <button *ngIf="user" type="button" class="btn btn-link" aria-label="Close">
+      <span aria-hidden="true" (click)="toUserProfile()" class="close-button">
+        <svg-icon src="assets/img/user.svg" [svgStyle]="{'width.rem':'5pt','fill':'#ffffff'}"></svg-icon>
+        <span class="ml-1">{{user}}</span></span>
+    </button>
+    <button  *ngIf="user" type="button" class="btn btn-link " aria-label="Close">
+      <span aria-hidden="true" (click)="confirmLogout()" class="close-button">X</span>
+    </button>
+    <button *ngIf="!user" type="button" class="btn btn-link" aria-label="Close">
+      <span aria-hidden="true" (click)="login()" class="close-button">Login</span>
+    </button>
+  </div>
+</nav>
+
+<!--  <div class=" d-sm-block collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--  <div  class="d-sm-block navbar-text to-right">-->
+<!--    <div class="navbar-text to-right" *ngIf="languages.length > 1">-->
 <!--      <div class="d-inline-block" *ngFor="let language of languages; last as isLast">-->
 <!--        <a class="button-transparent mx-2 px-0"-->
 <!--           [ngClass]="{'current-language': this.currentLanguage === language}"-->
@@ -24,35 +51,17 @@
 <!--        </a>-->
 <!--        <span *ngIf="!isLast">|</span>-->
 <!--      </div>-->
-    </div>
+<!--    </div>-->
 
 
-    <form class="form-inline my-2 my-lg-0" *ngIf="user">
-      <button type="button" class="btn btn-link my-2 my-sm-0 ml-5 no-margin no-padding" aria-label="Close">
-      <span aria-hidden="true" (click)="toUserProfile()" class="close-button">
-        <svg-icon src="assets/img/user.svg" [svgStyle]="{'width.rem':'1.5rem','fill':'#ffffff'}"></svg-icon>
-        <span class="ml-1">{{user}}</span></span>
-      </button>
-    </form>
+<!--  </div>-->
 
 
-    <form class="form-inline my-2 my-lg-0" *ngIf="user">
-      <button type="button" class="btn btn-link my-2 my-sm-0 ml-5 no-margin no-padding" aria-label="Close">
-        <span aria-hidden="true" (click)="confirmLogout()" class="close-button">Logout</span>
-      </button>
-    </form>
-  </div>
 
-  <form class="form-inline my-2 my-lg-0" *ngIf="!user">
-    <button type="button" class="btn btn-link my-2 my-sm-0 ml-5 no-margin no-padding" aria-label="Close">
-      <span aria-hidden="true" (click)="login()" class="close-button">Login</span>
-    </button>
-  </form>
+<!--  <div class="d-block d-sm-none form-inline my-2 my-lg-0 no-margin" *ngIf="user">-->
+<!--    <img [src]="'assets/img/user-fold.png'" alt="User info popup button"/>-->
+<!--    <button type="button" class="btn btn-link my-2 my-sm-0 ml-3 no-margin no-padding" aria-label="Close">-->
+<!--      <span aria-hidden="true" (click)="confirmLogout()" class="close-button-mobile">&times;</span>-->
+<!--    </button>-->
+<!--  </div>-->
 
-  <div class="d-block d-sm-none form-inline my-2 my-lg-0 no-margin" *ngIf="user">
-    <img [src]="'assets/img/user-fold.png'" alt="User info popup button"/>
-    <button type="button" class="btn btn-link my-2 my-sm-0 ml-3 no-margin no-padding" aria-label="Close">
-      <span aria-hidden="true" (click)="confirmLogout()" class="close-button-mobile">&times;</span>
-    </button>
-  </div>
-</nav>

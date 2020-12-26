@@ -60,15 +60,13 @@ svg:hover {
 
 svg{
   fill: blue;
-  width: 2rem;
-  padding: -1rem;
-  margin: -1rem;
+  width: 30pt;
 }
 
 .qr {
-  margin-top: 0.3rem;
-  margin-bottom: 0.3rem;
-  padding-left: 3rem;
+  margin-top: 0.5pt;
+  margin-bottom: 0.5pt;
+  padding-left: 0.5pt;
 }
 
 button:hover{
@@ -78,12 +76,15 @@ button:hover{
 .radio-group {
   display: flex;
   flex-direction: row;
-  padding-top: 10pt;
-  margin-bottom: -20pt;
-  margin-left: -40pt;
+  padding-top: 5pt;
+  margin-bottom: -10pt;
+  margin-left: -20pt;
 }
 
 .radio-button {
   margin-right: 4pt;
 }
 
+.svgsize{
+  width: 20pt;
+}

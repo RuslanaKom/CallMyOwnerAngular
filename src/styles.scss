@@ -39,11 +39,11 @@ $call-my-owner-theme: mat-light-theme($call-my-owner-primary, $call-my-owner-acc
 
 .header {
   color: $light-blue;
-  font-size: 3rem;
-  line-height: 3rem;
+  font-size: 20pt;
+  line-height: 20pt;
   text-align: left;
   font-family: 'Open Sans', sans-serif;
-  max-width: 53rem;
+  max-width: 300pt;
 }
 
 div, label, input, select, ol {
